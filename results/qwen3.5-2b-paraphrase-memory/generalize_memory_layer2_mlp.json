@@ -1,0 +1,65 @@
+{
+ "args": {
+  "data": "data/qwen3.5-2b-paraphrase-memory",
+  "states": "memory",
+  "encoder": "mlp",
+  "layer": 2,
+  "steps": 3000,
+  "test_frac": 0.2,
+  "out": "results/qwen3.5-2b-paraphrase-memory"
+ },
+ "horizon": {
+  "latent model": [
+   0.6548119783401489,
+   0.6003109216690063,
+   0.5233533382415771,
+   0.503292441368103
+  ],
+  "latent model, trained on 8 clues": [
+   0.7115554809570312,
+   0.664033055305481,
+   0.6297916173934937,
+   0.6189109086990356
+  ],
+  "GRU on clue ids": [
+   0.4977682828903198,
+   0.4353564977645874,
+   0.34988701343536377,
+   0.3202153444290161
+  ],
+  "GRU on clue ids, trained on 8 clues": [
+   0.5752586126327515,
+   0.5249350070953369,
+   0.43906474113464355,
+   0.41912585496902466
+  ],
+  "GRU on clue ids + phrasing": [
+   0.5812197923660278,
+   0.5032863616943359,
+   0.4031013250350952,
+   0.36773210763931274
+  ],
+  "GRU on clue ids + phrasing, trained on 8 clues": [
+   0.6812235116958618,
+   0.6463465690612793,
+   0.613700270652771,
+   0.5984530448913574
+  ]
+ },
+ "templates": {
+  "train_episodes": 365,
+  "test_episodes": 301,
+  "latent model (readout of state)": {
+   "before any held-out clue": 0.7645267248153687,
+   "after a held-out clue": 0.43352508544921875
+  },
+  "GRU on clue ids": {
+   "before any held-out clue": 0.5774754285812378,
+   "after a held-out clue": 0.4161631464958191
+  },
+  "GRU on clue ids + phrasing": {
+   "before any held-out clue": 0.6932152509689331,
+   "after a held-out clue": -0.03186941146850586
+  }
+ }
+}

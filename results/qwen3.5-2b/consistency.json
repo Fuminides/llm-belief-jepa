@@ -1,0 +1,30 @@
+{
+ "llm": {
+  "negated_red_slope": -0.29996798038482664,
+  "big_small_size_response": 0.017221679911017418
+ },
+ "layer 3, natural only": {
+  "natural_readout_r2": 0.9184166193008423,
+  "agreement_r2": -2.6400341987609863,
+  "negated_red_slope": 0.7665930807590484,
+  "big_small_size_response": 1.2655082941055298
+ },
+ "layer 3, with interventions": {
+  "natural_readout_r2": 0.9258336424827576,
+  "agreement_r2": -0.6177716255187988,
+  "negated_red_slope": 0.7890462517738346,
+  "big_small_size_response": 0.29554587602615356
+ },
+ "layer 24, natural only": {
+  "natural_readout_r2": 0.8909924626350403,
+  "agreement_r2": 0.8301293849945068,
+  "negated_red_slope": -0.21067151576280596,
+  "big_small_size_response": 0.01747056096792221
+ },
+ "layer 24, with interventions": {
+  "natural_readout_r2": 0.9090220928192139,
+  "agreement_r2": 0.8949162364006042,
+  "negated_red_slope": -0.21862522959709166,
+  "big_small_size_response": 0.012724615633487701
+ }
+}

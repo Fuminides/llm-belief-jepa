@@ -1,0 +1,947 @@
+{
+ "belief variance share": 0.07879269841100389,
+ "clusterings": {
+  "raw latent": {
+   "nmi": {
+    "belief pattern": 0.16991177170530405,
+    "turn": 0.1547735980467394,
+    "clue attribute": 0.21643727536854068,
+    "clue source": 0.002002615163314519,
+    "clue phrasing": 0.13174906384916907,
+    "clue template": 0.03389773564551479,
+    "clue level": 0.03529492736963987,
+    "clue negations": 0.18417552806138673,
+    "clue contradicts": 0.032637818354876835
+   },
+   "clusters": [
+    {
+     "cluster": 0,
+     "states": 195,
+     "mean P(value 0)": {
+      "colour": 0.32,
+      "shape": 0.31,
+      "size": 0.44,
+      "material": 0.54
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 7,
+       "share in cluster": 0.22,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "shape",
+       "share in cluster": 0.58,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Alice",
+       "share in cluster": 0.53,
+       "share overall": 0.51
+      },
+      "clue phrasing": {
+       "value": "affirmative",
+       "share in cluster": 0.97,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "3: \"{source} told us the object {claim}....\"",
+       "share in cluster": 0.13,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 1,
+       "share in cluster": 0.35,
+       "share overall": 0.26
+      },
+      "clue negations": {
+       "value": 0,
+       "share in cluster": 0.97,
+       "share overall": 0.37
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.49,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Bob claims that the object is not big. | According to Alice, the object is square.",
+      "Asked whether the object is big, Alice said that this is false. | Alice told us the object is blue.",
+      "When we spoke to Alice this morning, the reply was that the object is not small. | Alice told us the object is blue."
+     ]
+    },
+    {
+     "cluster": 1,
+     "states": 382,
+     "mean P(value 0)": {
+      "colour": 0.42,
+      "shape": 0.45,
+      "size": 0.41,
+      "material": 0.44
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 6,
+       "share in cluster": 0.17,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "material",
+       "share in cluster": 0.98,
+       "share overall": 0.24
+      },
+      "clue source": {
+       "value": "Bob",
+       "share in cluster": 0.55,
+       "share overall": 0.49
+      },
+      "clue phrasing": {
+       "value": "affirmative",
+       "share in cluster": 0.54,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "5: \"If you ask {source}, the answer you will...\"",
+       "share in cluster": 0.11,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 2,
+       "share in cluster": 0.3,
+       "share overall": 0.25
+      },
+      "clue negations": {
+       "value": 0,
+       "share in cluster": 0.46,
+       "share overall": 0.37
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.4,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Alice denies that the object is wooden. | If you ask Alice, the answer you will get is that the object is metal.",
+      "Alice says the object is not big. | Alice claims that the object is not wooden.",
+      "Alice says the object is not metal. | Bob claims that the object is not wooden."
+     ]
+    },
+    {
+     "cluster": 2,
+     "states": 1016,
+     "mean P(value 0)": {
+      "colour": 0.41,
+      "shape": 0.47,
+      "size": 0.41,
+      "material": 0.58
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 1,
+       "share in cluster": 0.29,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "shape",
+       "share in cluster": 0.3,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Alice",
+       "share in cluster": 0.54,
+       "share overall": 0.51
+      },
+      "clue phrasing": {
+       "value": "negated",
+       "share in cluster": 0.63,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "9: \"Asked whether the object {anticlaim}, {s...\"",
+       "share in cluster": 0.12,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 3,
+       "share in cluster": 0.33,
+       "share overall": 0.24
+      },
+      "clue negations": {
+       "value": 2,
+       "share in cluster": 0.17,
+       "share overall": 0.12
+      },
+      "clue contradicts": {
+       "value": "no",
+       "share in cluster": 0.82,
+       "share overall": 0.64
+      }
+     },
+     "examples": [
+      "Bob says it is false that the object is big. | When we spoke to Bob this morning, the reply was that the object is not metal.",
+      "Bob says it is false that the object is wooden. | Alice says the object is not red.",
+      "Alice says the object is not big."
+     ]
+    },
+    {
+     "cluster": 3,
+     "states": 305,
+     "mean P(value 0)": {
+      "colour": 0.4,
+      "shape": 0.47,
+      "size": 0.17,
+      "material": 0.59
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 4,
+       "share in cluster": 0.17,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "size",
+       "share in cluster": 0.47,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Alice",
+       "share in cluster": 0.54,
+       "share overall": 0.51
+      },
+      "clue phrasing": {
+       "value": "affirmative",
+       "share in cluster": 0.62,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "9: \"Asked whether the object {anticlaim}, {s...\"",
+       "share in cluster": 0.1,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 2,
+       "share in cluster": 0.27,
+       "share overall": 0.25
+      },
+      "clue negations": {
+       "value": 0,
+       "share in cluster": 0.5,
+       "share overall": 0.37
+      },
+      "clue contradicts": {
+       "value": "no",
+       "share in cluster": 0.67,
+       "share overall": 0.64
+      }
+     },
+     "examples": [
+      "Bob says the object is metal. | Alice says the object is small.",
+      "If you ask Alice, the answer you will get is that the object is not round. | When we spoke to Alice this morning, the reply was that the object is red.",
+      "When we spoke to Bob this morning, the reply was that the object is not metal. | If you ask Bob, the answer you will get is that the object is small."
+     ]
+    },
+    {
+     "cluster": 4,
+     "states": 370,
+     "mean P(value 0)": {
+      "colour": 0.41,
+      "shape": 0.55,
+      "size": 0.36,
+      "material": 0.58
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 6,
+       "share in cluster": 0.22,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "size",
+       "share in cluster": 0.51,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Bob",
+       "share in cluster": 0.54,
+       "share overall": 0.49
+      },
+      "clue phrasing": {
+       "value": "negated",
+       "share in cluster": 0.82,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "8: \"{source} denies that the object {anticla...\"",
+       "share in cluster": 0.12,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 3,
+       "share in cluster": 0.25,
+       "share overall": 0.24
+      },
+      "clue negations": {
+       "value": 1,
+       "share in cluster": 0.82,
+       "share overall": 0.5
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.48,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "If you ask Alice, the answer you will get is that the object is not big. | Bob says the object is not big.",
+      "If you ask Bob, the answer you will get is that the object is square. | Alice, who had a good look at it earlier, told us that the object is not big.",
+      "Bob says the object is not blue. | Bob says the object is not square."
+     ]
+    },
+    {
+     "cluster": 5,
+     "states": 133,
+     "mean P(value 0)": {
+      "colour": 0.4,
+      "shape": 0.71,
+      "size": 0.42,
+      "material": 0.59
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 8,
+       "share in cluster": 0.17,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "shape",
+       "share in cluster": 1.0,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Bob",
+       "share in cluster": 0.56,
+       "share overall": 0.49
+      },
+      "clue phrasing": {
+       "value": "affirmative",
+       "share in cluster": 0.98,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "3: \"{source} told us the object {claim}....\"",
+       "share in cluster": 0.11,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 1,
+       "share in cluster": 0.36,
+       "share overall": 0.26
+      },
+      "clue negations": {
+       "value": 0,
+       "share in cluster": 0.98,
+       "share overall": 0.37
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.37,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "When we spoke to Bob this morning, the reply was that the object is not small. | Alice, who had a good look at it earlier, told us that the object is round.",
+      "Alice says it is false that the object is wooden. | If you ask Alice, the answer you will get is that the object is round.",
+      "According to Bob, the object is square. | If you ask Alice, the answer you will get is that the object is round."
+     ]
+    },
+    {
+     "cluster": 6,
+     "states": 521,
+     "mean P(value 0)": {
+      "colour": 0.38,
+      "shape": 0.41,
+      "size": 0.45,
+      "material": 0.55
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 8,
+       "share in cluster": 0.27,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "size",
+       "share in cluster": 0.29,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Alice",
+       "share in cluster": 0.52,
+       "share overall": 0.51
+      },
+      "clue phrasing": {
+       "value": "negated",
+       "share in cluster": 0.71,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "9: \"Asked whether the object {anticlaim}, {s...\"",
+       "share in cluster": 0.13,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 3,
+       "share in cluster": 0.37,
+       "share overall": 0.24
+      },
+      "clue negations": {
+       "value": 2,
+       "share in cluster": 0.21,
+       "share overall": 0.12
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.55,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Bob says the object is not metal. | Alice says the object is not metal.",
+      "Alice says the object is not small. | When we spoke to Alice this morning, the reply was that the object is not small.",
+      "When we spoke to Alice this morning, the reply was that the object is not blue. | Bob, who had a good look at it earlier, told us that the object is not metal."
+     ]
+    },
+    {
+     "cluster": 7,
+     "states": 278,
+     "mean P(value 0)": {
+      "colour": 0.55,
+      "shape": 0.49,
+      "size": 0.65,
+      "material": 0.55
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 5,
+       "share in cluster": 0.15,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "size",
+       "share in cluster": 0.53,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Alice",
+       "share in cluster": 0.52,
+       "share overall": 0.51
+      },
+      "clue phrasing": {
+       "value": "affirmative",
+       "share in cluster": 1.0,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "3: \"{source} told us the object {claim}....\"",
+       "share in cluster": 0.15,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 1,
+       "share in cluster": 0.36,
+       "share overall": 0.26
+      },
+      "clue negations": {
+       "value": 0,
+       "share in cluster": 0.99,
+       "share overall": 0.37
+      },
+      "clue contradicts": {
+       "value": "no",
+       "share in cluster": 0.65,
+       "share overall": 0.64
+      }
+     },
+     "examples": [
+      "Alice says the object is small. | According to Alice, the object is big.",
+      "Bob says the object is metal. | Alice, who had a good look at it earlier, told us that the object is big.",
+      "Alice denies that the object is not wooden. | Alice claims that the object is big."
+     ]
+    }
+   ]
+  },
+  "latent minus belief": {
+   "nmi": {
+    "belief pattern": 0.06549350481374806,
+    "turn": 0.15915917466957794,
+    "clue attribute": 0.4036560097641303,
+    "clue source": 0.0011839021081670048,
+    "clue phrasing": 0.03019707543708288,
+    "clue template": 0.014816486025276637,
+    "clue level": 0.010588782342373402,
+    "clue negations": 0.0433265155242919,
+    "clue contradicts": 0.039994755053900266
+   },
+   "clusters": [
+    {
+     "cluster": 0,
+     "states": 264,
+     "mean P(value 0)": {
+      "colour": 0.41,
+      "shape": 0.49,
+      "size": 0.4,
+      "material": 0.57
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 7,
+       "share in cluster": 0.19,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "shape",
+       "share in cluster": 1.0,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Bob",
+       "share in cluster": 0.49,
+       "share overall": 0.49
+      },
+      "clue phrasing": {
+       "value": "negated",
+       "share in cluster": 0.55,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "5: \"If you ask {source}, the answer you will...\"",
+       "share in cluster": 0.11,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 2,
+       "share in cluster": 0.28,
+       "share overall": 0.25
+      },
+      "clue negations": {
+       "value": 1,
+       "share in cluster": 0.55,
+       "share overall": 0.5
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.41,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "When we spoke to Alice this morning, the reply was that the object is not square. | If you ask Bob, the answer you will get is that the object is round.",
+      "Alice denies that the object is not big. | According to Bob, the object is not round.",
+      "Bob says the object is not small. | Asked whether the object is not round, Alice said that this is false."
+     ]
+    },
+    {
+     "cluster": 1,
+     "states": 108,
+     "mean P(value 0)": {
+      "colour": 0.61,
+      "shape": 0.47,
+      "size": 0.45,
+      "material": 0.54
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 7,
+       "share in cluster": 0.2,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "colour",
+       "share in cluster": 1.0,
+       "share overall": 0.26
+      },
+      "clue source": {
+       "value": "Bob",
+       "share in cluster": 0.54,
+       "share overall": 0.49
+      },
+      "clue phrasing": {
+       "value": "affirmative",
+       "share in cluster": 0.98,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "3: \"{source} told us the object {claim}....\"",
+       "share in cluster": 0.19,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 1,
+       "share in cluster": 0.44,
+       "share overall": 0.26
+      },
+      "clue negations": {
+       "value": 0,
+       "share in cluster": 0.98,
+       "share overall": 0.37
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.57,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Alice says the object is square. | According to Alice, the object is red.",
+      "According to Alice, the object is not red. | If you ask Bob, the answer you will get is that the object is red.",
+      "According to Bob, the object is not big. | Bob says the object is red."
+     ]
+    },
+    {
+     "cluster": 2,
+     "states": 548,
+     "mean P(value 0)": {
+      "colour": 0.4,
+      "shape": 0.48,
+      "size": 0.39,
+      "material": 0.55
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 6,
+       "share in cluster": 0.21,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "colour",
+       "share in cluster": 0.51,
+       "share overall": 0.26
+      },
+      "clue source": {
+       "value": "Alice",
+       "share in cluster": 0.51,
+       "share overall": 0.51
+      },
+      "clue phrasing": {
+       "value": "affirmative",
+       "share in cluster": 0.52,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "7: \"{source} says it is false that the objec...\"",
+       "share in cluster": 0.1,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 3,
+       "share in cluster": 0.25,
+       "share overall": 0.24
+      },
+      "clue negations": {
+       "value": 2,
+       "share in cluster": 0.16,
+       "share overall": 0.12
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.47,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Alice says it is false that the object is small. | Bob, who had a good look at it earlier, told us that the object is not blue.",
+      "Alice says the object is metal. | Alice claims that the object is small.",
+      "Bob told us the object is metal. | When we spoke to Bob this morning, the reply was that the object is not small."
+     ]
+    },
+    {
+     "cluster": 3,
+     "states": 263,
+     "mean P(value 0)": {
+      "colour": 0.42,
+      "shape": 0.46,
+      "size": 0.4,
+      "material": 0.56
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 6,
+       "share in cluster": 0.21,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "material",
+       "share in cluster": 0.99,
+       "share overall": 0.24
+      },
+      "clue source": {
+       "value": "Bob",
+       "share in cluster": 0.56,
+       "share overall": 0.49
+      },
+      "clue phrasing": {
+       "value": "negated",
+       "share in cluster": 0.52,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "5: \"If you ask {source}, the answer you will...\"",
+       "share in cluster": 0.11,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 0,
+       "share in cluster": 0.3,
+       "share overall": 0.26
+      },
+      "clue negations": {
+       "value": 1,
+       "share in cluster": 0.52,
+       "share overall": 0.5
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.46,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Bob says it is false that the object is big. | Bob says the object is not wooden.",
+      "Alice says the object is square. | Alice says the object is wooden.",
+      "According to Bob, the object is not red. | Bob, who had a good look at it earlier, told us that the object is not wooden."
+     ]
+    },
+    {
+     "cluster": 4,
+     "states": 283,
+     "mean P(value 0)": {
+      "colour": 0.39,
+      "shape": 0.39,
+      "size": 0.42,
+      "material": 0.57
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 7,
+       "share in cluster": 0.21,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "shape",
+       "share in cluster": 1.0,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Alice",
+       "share in cluster": 0.53,
+       "share overall": 0.51
+      },
+      "clue phrasing": {
+       "value": "negated",
+       "share in cluster": 0.59,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "3: \"{source} told us the object {claim}....\"",
+       "share in cluster": 0.12,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 1,
+       "share in cluster": 0.28,
+       "share overall": 0.26
+      },
+      "clue negations": {
+       "value": 1,
+       "share in cluster": 0.59,
+       "share overall": 0.5
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.43,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Bob claims that the object is blue. | Alice told us the object is not square.",
+      "Alice told us the object is wooden. | Bob says the object is not square.",
+      "Alice says it is false that the object is blue. | Bob says the object is square."
+     ]
+    },
+    {
+     "cluster": 5,
+     "states": 498,
+     "mean P(value 0)": {
+      "colour": 0.4,
+      "shape": 0.46,
+      "size": 0.39,
+      "material": 0.54
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 8,
+       "share in cluster": 0.18,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "material",
+       "share in cluster": 0.54,
+       "share overall": 0.24
+      },
+      "clue source": {
+       "value": "Bob",
+       "share in cluster": 0.51,
+       "share overall": 0.49
+      },
+      "clue phrasing": {
+       "value": "negated",
+       "share in cluster": 0.68,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "9: \"Asked whether the object {anticlaim}, {s...\"",
+       "share in cluster": 0.12,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 3,
+       "share in cluster": 0.31,
+       "share overall": 0.24
+      },
+      "clue negations": {
+       "value": 2,
+       "share in cluster": 0.17,
+       "share overall": 0.12
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.44,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Alice says the object is round. | Bob says the object is not red.",
+      "Bob claims that the object is not round. | According to Alice, the object is not red.",
+      "When we spoke to Alice this morning, the reply was that the object is not blue. | When we spoke to Alice this morning, the reply was that the object is not red."
+     ]
+    },
+    {
+     "cluster": 6,
+     "states": 310,
+     "mean P(value 0)": {
+      "colour": 0.41,
+      "shape": 0.47,
+      "size": 0.46,
+      "material": 0.55
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 5,
+       "share in cluster": 0.2,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "size",
+       "share in cluster": 0.99,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Bob",
+       "share in cluster": 0.5,
+       "share overall": 0.49
+      },
+      "clue phrasing": {
+       "value": "negated",
+       "share in cluster": 0.58,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "1: \"According to {source}, the object {claim...\"",
+       "share in cluster": 0.12,
+       "share overall": 0.09
+      },
+      "clue level": {
+       "value": 0,
+       "share in cluster": 0.28,
+       "share overall": 0.26
+      },
+      "clue negations": {
+       "value": 1,
+       "share in cluster": 0.58,
+       "share overall": 0.5
+      },
+      "clue contradicts": {
+       "value": "yes",
+       "share in cluster": 0.42,
+       "share overall": 0.36
+      }
+     },
+     "examples": [
+      "Alice says the object is big. | Alice claims that the object is not big.",
+      "If you ask Alice, the answer you will get is that the object is wooden. | Bob, who had a good look at it earlier, told us that the object is not big.",
+      "Alice, who had a good look at it earlier, told us that the object is not small. | According to Bob, the object is big."
+     ]
+    },
+    {
+     "cluster": 7,
+     "states": 926,
+     "mean P(value 0)": {
+      "colour": 0.41,
+      "shape": 0.48,
+      "size": 0.42,
+      "material": 0.55
+     },
+     "most over-represented": {
+      "turn": {
+       "value": 1,
+       "share in cluster": 0.36,
+       "share overall": 0.12
+      },
+      "clue attribute": {
+       "value": "size",
+       "share in cluster": 0.27,
+       "share overall": 0.25
+      },
+      "clue source": {
+       "value": "Alice",
+       "share in cluster": 0.54,
+       "share overall": 0.51
+      },
+      "clue phrasing": {
+       "value": "affirmative",
+       "share in cluster": 0.6,
+       "share overall": 0.5
+      },
+      "clue template": {
+       "value": "9: \"Asked whether the object {anticlaim}, {s...\"",
+       "share in cluster": 0.12,
+       "share overall": 0.08
+      },
+      "clue level": {
+       "value": 3,
+       "share in cluster": 0.28,
+       "share overall": 0.24
+      },
+      "clue negations": {
+       "value": 2,
+       "share in cluster": 0.15,
+       "share overall": 0.12
+      },
+      "clue contradicts": {
+       "value": "no",
+       "share in cluster": 0.87,
+       "share overall": 0.64
+      }
+     },
+     "examples": [
+      "Alice says the object is red. | Alice says it is false that the object is square.",
+      "Alice denies that the object is not metal. | Alice denies that the object is big.",
+      "Asked whether the object is not round, Bob said that this is false. | Bob says the object is not small."
+     ]
+    }
+   ]
+  }
+ }
+}

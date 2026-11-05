@@ -1,0 +1,140 @@
+{
+ "model": "Qwen/Qwen3.5-9B",
+ "seed": 0,
+ "config": {
+  "rows": 7,
+  "cols": 7,
+  "view_radius": null,
+  "symbols": "%&$+=*",
+  "terrain": {
+   "wall": {
+    "symbol": "#",
+    "blocks_move": true,
+    "blocks_view": true
+   },
+   "ice": {
+    "slip_probability": 0.5,
+    "slip_cells": 1
+   },
+   "fire": {
+    "damage": 1
+   },
+   "plain": {}
+  }
+ },
+ "results": {
+  "first/fov": {
+   "accuracy": 0.935,
+   "p_correct": 0.7729331385716796,
+   "chance": 0.3725,
+   "move_mass": 0.9978717237710952,
+   "choices": {
+    "up": 82,
+    "down": 29,
+    "left": 33,
+    "right": 56
+   },
+   "n": 200
+  },
+  "first/coords": {
+   "accuracy": 0.91,
+   "p_correct": 0.7798489602748304,
+   "chance": 0.3725,
+   "move_mass": 0.9983415612578392,
+   "choices": {
+    "up": 56,
+    "down": 16,
+    "left": 59,
+    "right": 69
+   },
+   "n": 200
+  },
+  "memory/remember": {
+   "accuracy": 0.72,
+   "p_correct": 0.6232788658514619,
+   "chance": 0.315,
+   "move_mass": 0.9839820614457131,
+   "choices": {
+    "up": 40,
+    "down": 11,
+    "left": 80,
+    "right": 69
+   },
+   "n": 200
+  },
+  "memory/told": {
+   "accuracy": 0.665,
+   "p_correct": 0.6473109030467458,
+   "chance": 0.315,
+   "move_mass": 0.9916760754585267,
+   "choices": {
+    "up": 35,
+    "down": 8,
+    "left": 86,
+    "right": 71
+   },
+   "n": 200
+  },
+  "memory/none": {
+   "accuracy": 0.55,
+   "p_correct": 0.48325159915722904,
+   "chance": 0.315,
+   "move_mass": 0.9976600044965744,
+   "choices": {
+    "up": 139,
+    "down": 15,
+    "left": 3,
+    "right": 43
+   },
+   "n": 200
+  },
+  "ice/slip": {
+   "accuracy": 0.4,
+   "p_correct": 0.36142531998455524,
+   "chance": 0.25,
+   "move_mass": 0.9974600580334664,
+   "choices": {
+    "up": 94,
+    "down": 5,
+    "left": 32,
+    "right": 69
+   },
+   "n": 200,
+   "ice_rate": 0.555,
+   "p_ice": 0.4884752380847931,
+   "away_rate": 0.04500000000000004
+  },
+  "ice/no_hazard": {
+   "accuracy": 0.955,
+   "p_correct": 0.8512950020097196,
+   "chance": 0.5,
+   "move_mass": 0.9975322958827019,
+   "choices": {
+    "up": 93,
+    "down": 4,
+    "left": 37,
+    "right": 66
+   },
+   "n": 200,
+   "ice_rate": 0.545,
+   "p_ice": 0.4706398012675345,
+   "away_rate": 0.04500000000000004
+  },
+  "ice/never_slipped": {
+   "accuracy": 0.945,
+   "p_correct": 0.8520731721073389,
+   "chance": 0.5,
+   "move_mass": 0.9978377094864845,
+   "choices": {
+    "up": 105,
+    "down": 6,
+    "left": 28,
+    "right": 61
+   },
+   "n": 200,
+   "ice_rate": 0.505,
+   "p_ice": 0.46544931545853613,
+   "away_rate": 0.05500000000000005
+  }
+ }
+}

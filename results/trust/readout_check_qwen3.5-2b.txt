@@ -1,0 +1,24 @@
+Loading weights:   0%|          | 0/320 [00:00<?, ?it/s]Loading weights: 100%|██████████| 320/320 [00:00<00:00, 8768.22it/s]
+[transformers] `causal_conv1d_fn` is falling back to its reference PyTorch implementation because `causal_conv1d` is not installed. This is correct but much slower; install `causal_conv1d` for the optimized kernel.
+bold (both option orders averaged)
+  no-clue belief (Bayes 0.5): [0.533 0.321 0.587 0.256]
+  corr with Bayes, turn 1 / last: 0.807 0.719
+  mean shift towards the asserted value: 0.219 (Bayes: 0.238 )
+  affirmative / negated: 0.239 0.197
+  the audit tool / the user: 0.256 0.178
+  shift towards a value named without evidence (log-odds, 0 = no lexical effect): -0.425 ± 0.066
+  probability of the answer tokens: 0.97 per attribute [0.99  0.961 0.977 0.953]
+  decision: P(accept) with no clue 0.055; mean 0.049 where Bayes says accept (0.04 of the states) and 0.047 where it says reject
+  agreement of the more probable answer with the Bayes-optimal decision: 0.964; corr with the posterior of legality: 0.724
+  probability of the decision answer tokens: 0.985
+chat (both option orders averaged)
+  no-clue belief (Bayes 0.5): [0.54  0.605 0.633 0.857]
+  corr with Bayes, turn 1 / last: 0.435 0.384
+  mean shift towards the asserted value: 0.168 (Bayes: 0.238 )
+  affirmative / negated: 0.194 0.14
+  the audit tool / the user: 0.191 0.142
+  shift towards a value named without evidence (log-odds, 0 = no lexical effect): -0.344 ± 0.063
+  probability of the answer tokens: 0.021 per attribute [0.013 0.016 0.018 0.036]
+  decision: P(accept) with no clue 0.308; mean 0.221 where Bayes says accept (0.04 of the states) and 0.215 where it says reject
+  agreement of the more probable answer with the Bayes-optimal decision: 0.967; corr with the posterior of legality: 0.613
+  probability of the decision answer tokens: 0.003

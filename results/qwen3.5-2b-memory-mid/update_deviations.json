@@ -1,0 +1,54 @@
+{
+ "layer": 14,
+ "test_episodes": 400,
+ "bayes": {
+  "intercept, Alice aff.": 2.1972245773362196,
+  "intercept, Alice neg.": 2.1972245773362196,
+  "intercept, Bob aff.": 0.4054651081081642,
+  "intercept, Bob neg.": 0.4054651081081642,
+  "per log-odds of belief before": 0.0,
+  "per earlier clue on the attribute": 0.0,
+  "agrees with the current lean": 0.0
+ },
+ "model, every clue at every state": {
+  "intercept, Alice aff.": 1.4006282778165444,
+  "intercept, Alice neg.": 0.7116379986172823,
+  "intercept, Bob aff.": 1.2062593637339474,
+  "intercept, Bob neg.": 0.645372223530716,
+  "per log-odds of belief before": -0.1936643703674361,
+  "per earlier clue on the attribute": -0.18417265979910466,
+  "agrees with the current lean": -0.11856604965480504
+ },
+ "model, the real clues": {
+  "intercept, Alice aff.": 1.4084414614241898,
+  "intercept, Alice neg.": 0.7223249133448191,
+  "intercept, Bob aff.": 1.163939367958677,
+  "intercept, Bob neg.": 0.6269944812100692,
+  "per log-odds of belief before": -0.16922049917528656,
+  "per earlier clue on the attribute": -0.18341874528935093,
+  "agrees with the current lean": -0.09013995075444435
+ },
+ "LLM, the real clues": {
+  "intercept, Alice aff.": 1.4382531356861983,
+  "intercept, Alice neg.": 0.7818145256229209,
+  "intercept, Bob aff.": 1.1679481249856274,
+  "intercept, Bob neg.": 0.6701278891881932,
+  "per log-odds of belief before": -0.22625792920536744,
+  "per earlier clue on the attribute": -0.20997400705184935,
+  "agrees with the current lean": -0.08237213396674167
+ },
+ "mean shift of an affirmative Alice clue by earlier clues on the attribute (0, 1, 2, 3+)": {
+  "model, every clue at every state": [
+   1.4541472317397082,
+   1.0254875674586255,
+   0.9136407925515533,
+   0.8196069812095099
+  ],
+  "LLM, the real clues": [
+   1.5484173469225133,
+   1.0416875964729115,
+   0.8480483579823351,
+   0.7332143646975359
+  ]
+ }
+}

@@ -1,0 +1,12 @@
+{
+ "rows": 7,
+ "cols": 7,
+ "view_radius": null,
+ "symbols": "%&$+=*",
+ "terrain": {
+  "wall": {"symbol": "#", "blocks_move": true, "blocks_view": true},
+  "ice": {"slip_probability": 0.5, "slip_cells": 1},
+  "fire": {"damage": 1},
+  "plain": {}
+ }
+}

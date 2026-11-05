@@ -1,0 +1,276 @@
+{
+ "states": 315,
+ "decoder_test_r2": {
+  "3": 0.9884918928146362,
+  "6": 0.977080762386322,
+  "9": 0.9546148777008057,
+  "12": 0.9327661395072937,
+  "18": 0.9322220087051392
+ },
+ "real": {
+  "add": 0.8217479849382052,
+  "remove": 0.7809564241459446
+ },
+ "layers": {
+  "3": {
+   "forecast_add": 0.7445164488894599,
+   "forecast_add_correlation_real": 0.8848107334441125,
+   "encoder_reads_latent_edit_r2": 0.9349353313446045,
+   "shift_norm": {
+    "oracle": 0.4454616904258728,
+    "latent": 0.45571762323379517,
+    "inverted": 4.934426784515381,
+    "random": 0.45571762323379517,
+    "turn mean": 2.305415630340576
+   },
+   "oracle": {
+    "add": 0.21143723710307052,
+    "add_fraction": 0.2573018017427453,
+    "remove": 0.7861537365568063,
+    "remove_fraction": 1.0066550607052698,
+    "add_correlation_real": 0.3976036999962729,
+    "add_correlation_forecast": 0.36197207070165927
+   },
+   "latent": {
+    "add": 0.1700740341865827,
+    "add_fraction": 0.20696617126401853,
+    "remove": 0.7830335087128102,
+    "remove_fraction": 1.0026596676877806,
+    "add_correlation_real": 0.40570854101388776,
+    "add_correlation_forecast": 0.38821591164677566
+   },
+   "inverted": {
+    "add": -0.008467729055574016,
+    "add_fraction": -0.010304532789588504,
+    "remove": 0.7857818919987906,
+    "remove_fraction": 1.0061789207485208,
+    "add_correlation_real": 0.2765985327422837,
+    "add_correlation_forecast": 0.22802008837268242
+   },
+   "random": {
+    "add": 0.0010180055149017818,
+    "add_fraction": 0.0012388293413075238,
+    "remove": 0.11994784000137496,
+    "remove_fraction": 0.15359095116292837,
+    "add_correlation_real": 0.17604425896042655,
+    "add_correlation_forecast": 0.0781318171036929
+   },
+   "oracle, spread": {
+    "add": -0.0037013178099952046,
+    "add_fraction": -0.0045042006525559545,
+    "remove": 0.02807962138146635,
+    "remove_fraction": 0.035955426593966854,
+    "add_correlation_real": 0.12062166401885296,
+    "add_correlation_forecast": 0.07178355062032449
+   }
+  },
+  "6": {
+   "forecast_add": 0.7844935450052458,
+   "forecast_add_correlation_real": 0.8931340188853294,
+   "encoder_reads_latent_edit_r2": 0.9131101369857788,
+   "shift_norm": {
+    "oracle": 0.688357412815094,
+    "latent": 0.7400297522544861,
+    "inverted": 5.7100982666015625,
+    "random": 0.7400297522544861,
+    "turn mean": 2.81196665763855
+   },
+   "oracle": {
+    "add": 0.14282345202943636,
+    "add_fraction": 0.17380444448571,
+    "remove": 0.7658383724590142,
+    "remove_fraction": 0.9806416194047402,
+    "add_correlation_real": 0.423605954198591,
+    "add_correlation_forecast": 0.38413011861714574
+   },
+   "latent": {
+    "add": 0.12776831944901793,
+    "add_fraction": 0.15548358108675617,
+    "remove": 0.7639338374137878,
+    "remove_fraction": 0.9782028981312592,
+    "add_correlation_real": 0.39930220384802895,
+    "add_correlation_forecast": 0.3936969671706505
+   },
+   "inverted": {
+    "add": -0.007962430055652345,
+    "add_fraction": -0.009689625288525792,
+    "remove": 0.7507517091220334,
+    "remove_fraction": 0.9613234310007205,
+    "add_correlation_real": 0.2327951480367993,
+    "add_correlation_forecast": 0.20369011884298113
+   },
+   "random": {
+    "add": -0.00560316516988216,
+    "add_fraction": -0.006818593136317229,
+    "remove": 0.44068791620906383,
+    "remove_fraction": 0.5642925809733891,
+    "add_correlation_real": 0.21602572833566142,
+    "add_correlation_forecast": 0.14913659279071984
+   },
+   "oracle, spread": {
+    "add": 0.0015028029088936154,
+    "add_fraction": 0.001828788066948074,
+    "remove": 0.1632266594422242,
+    "remove_fraction": 0.20900866475454016,
+    "add_correlation_real": 0.3029503429038446,
+    "add_correlation_forecast": 0.230480595203078
+   }
+  },
+  "9": {
+   "forecast_add": 0.7693328800892073,
+   "forecast_add_correlation_real": 0.8944836902226537,
+   "encoder_reads_latent_edit_r2": 0.8861606121063232,
+   "shift_norm": {
+    "oracle": 1.0020687580108643,
+    "latent": 1.0402010679244995,
+    "inverted": 4.929443836212158,
+    "random": 1.0402010679244995,
+    "turn mean": 3.286450147628784
+   },
+   "oracle": {
+    "add": 0.11425545942333956,
+    "add_fraction": 0.1390395370813492,
+    "remove": 0.5594679498010211,
+    "remove_fraction": 0.7163881780124369,
+    "add_correlation_real": 0.4582567328803611,
+    "add_correlation_forecast": 0.4072992723034816
+   },
+   "latent": {
+    "add": 0.09053943782808288,
+    "add_fraction": 0.11017908104136255,
+    "remove": 0.5543470946569291,
+    "remove_fraction": 0.7098310193979954,
+    "add_correlation_real": 0.4746870201189216,
+    "add_correlation_forecast": 0.44793439517081435
+   },
+   "inverted": {
+    "add": -0.006010372652893975,
+    "add_fraction": -0.007314131294579262,
+    "remove": 0.5135399688286559,
+    "remove_fraction": 0.6575782629488761,
+    "add_correlation_real": 0.13530662103827176,
+    "add_correlation_forecast": 0.13334798786398594
+   },
+   "random": {
+    "add": -0.0019282405338590107,
+    "add_fraction": -0.0023465108149964163,
+    "remove": 0.30124453969654585,
+    "remove_fraction": 0.38573796230178586,
+    "add_correlation_real": 0.1489096804549786,
+    "add_correlation_forecast": 0.12660800238571523
+   },
+   "oracle, spread": {
+    "add": 0.023526681031263062,
+    "add_fraction": 0.02863004407979443,
+    "remove": 0.16099910898104547,
+    "remove_fraction": 0.2061563283215378,
+    "add_correlation_real": 0.4033640046841038,
+    "add_correlation_forecast": 0.3447614318429712
+   }
+  },
+  "12": {
+   "forecast_add": 0.7858834904337686,
+   "forecast_add_correlation_real": 0.8827628353406668,
+   "encoder_reads_latent_edit_r2": 0.848260223865509,
+   "shift_norm": {
+    "oracle": 1.3718194961547852,
+    "latent": 1.4664784669876099,
+    "inverted": 6.574680805206299,
+    "random": 1.4664784669876099,
+    "turn mean": 4.058988094329834
+   },
+   "oracle": {
+    "add": 0.14193816153657815,
+    "add_fraction": 0.17272711845743288,
+    "remove": 0.33562748858498204,
+    "remove_fraction": 0.4297646811114012,
+    "add_correlation_real": 0.37013493676054415,
+    "add_correlation_forecast": 0.35875956905562795
+   },
+   "latent": {
+    "add": 0.09539133775683623,
+    "add_fraction": 0.11608344590465844,
+    "remove": 0.34740983326845465,
+    "remove_fraction": 0.4448517516817698,
+    "add_correlation_real": 0.3316982786649183,
+    "add_correlation_forecast": 0.3538863766277519
+   },
+   "inverted": {
+    "add": -0.0046394326295407995,
+    "add_fraction": -0.005645809560323633,
+    "remove": 0.3229707452217265,
+    "remove_fraction": 0.41355795949169366,
+    "add_correlation_real": 0.11231842578957353,
+    "add_correlation_forecast": 0.04249222664447147
+   },
+   "random": {
+    "add": -0.002386963040760112,
+    "add_fraction": -0.0029047385384700516,
+    "remove": 0.20523291198270663,
+    "remove_fraction": 0.26279688038567545,
+    "add_correlation_real": 0.10506281687557979,
+    "add_correlation_forecast": 0.0812374133242676
+   },
+   "oracle, spread": {
+    "add": 0.012697948786311797,
+    "add_fraction": 0.015452363764867246,
+    "remove": 0.09988829878764967,
+    "remove_fraction": 0.12790508624970684,
+    "add_correlation_real": 0.19818151765701736,
+    "add_correlation_forecast": 0.16470337996455786
+   }
+  },
+  "18": {
+   "forecast_add": 0.7932800376699084,
+   "forecast_add_correlation_real": 0.8695168724326084,
+   "encoder_reads_latent_edit_r2": 0.8596097230911255,
+   "shift_norm": {
+    "oracle": 2.657048225402832,
+    "latent": 2.9445645809173584,
+    "inverted": 16.641756057739258,
+    "random": 2.9445645809173584,
+    "turn mean": 12.242178916931152
+   },
+   "oracle": {
+    "add": 0.03590223544114639,
+    "add_fraction": 0.04369008029127836,
+    "remove": 0.10001316441311722,
+    "remove_fraction": 0.12806497433258432,
+    "add_correlation_real": 0.3281794365891019,
+    "add_correlation_forecast": 0.3497094011839398
+   },
+   "latent": {
+    "add": 0.017717863164014285,
+    "add_fraction": 0.02156118845286448,
+    "remove": 0.09711742799078661,
+    "remove_fraction": 0.12435703835459759,
+    "add_correlation_real": 0.31130193858898525,
+    "add_correlation_forecast": 0.30637151629580656
+   },
+   "inverted": {
+    "add": -0.00043225537852517197,
+    "add_fraction": -0.0005260193957855305,
+    "remove": 0.10170994146712242,
+    "remove_fraction": 0.13023766540924817,
+    "add_correlation_real": 0.04434673861277839,
+    "add_correlation_forecast": 0.04542947522529653
+   },
+   "random": {
+    "add": -0.0030865235490694877,
+    "add_fraction": -0.003756046386048141,
+    "remove": 0.06808096808159635,
+    "remove_fraction": 0.08717639803789286,
+    "add_correlation_real": 0.06705897821427716,
+    "add_correlation_forecast": 0.032259929906777556
+   },
+   "oracle, spread": {
+    "add": 0.0021618872023527586,
+    "add_fraction": 0.002630839675883514,
+    "remove": 0.03172614372793644,
+    "remove_fraction": 0.040624729814640055,
+    "add_correlation_real": 0.1479294137123135,
+    "add_correlation_forecast": 0.1292293833100967
+   }
+  }
+ }
+}

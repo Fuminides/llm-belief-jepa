@@ -1,0 +1,188 @@
+{
+ "model": "Qwen/Qwen3.5-4B",
+ "seed": 0,
+ "results": {
+  "adjacent/spaced": {
+   "accuracy": 0.3,
+   "p_correct": 0.3431960730999708,
+   "chance": 0.25,
+   "move_mass": 0.6833102834224701,
+   "choices": {
+    "up": 17,
+    "down": 1,
+    "left": 0,
+    "right": 182
+   },
+   "n": 200
+  },
+  "adjacent/compact": {
+   "accuracy": 0.265,
+   "p_correct": 0.3118476809933782,
+   "chance": 0.25,
+   "move_mass": 0.6820905247330665,
+   "choices": {
+    "up": 1,
+    "down": 0,
+    "left": 0,
+    "right": 199
+   },
+   "n": 200
+  },
+  "adjacent/coords": {
+   "accuracy": 0.98,
+   "p_correct": 0.8166411726176739,
+   "chance": 0.25,
+   "move_mass": 0.6418849980831146,
+   "choices": {
+    "up": 57,
+    "down": 51,
+    "left": 36,
+    "right": 56
+   },
+   "n": 200
+  },
+  "adjacent/local": {
+   "accuracy": 1.0,
+   "p_correct": 0.7515437504649163,
+   "chance": 0.25,
+   "move_mass": 0.6974137228727341,
+   "choices": {
+    "up": 56,
+    "down": 55,
+    "left": 36,
+    "right": 53
+   },
+   "n": 200
+  },
+  "first/spaced": {
+   "accuracy": 0.535,
+   "p_correct": 0.4749996702093631,
+   "chance": 0.35625,
+   "move_mass": 0.7041501846909523,
+   "choices": {
+    "up": 35,
+    "down": 17,
+    "left": 3,
+    "right": 145
+   },
+   "n": 200
+  },
+  "first/compact": {
+   "accuracy": 0.375,
+   "p_correct": 0.41411942284554243,
+   "chance": 0.35625,
+   "move_mass": 0.6943492579460144,
+   "choices": {
+    "up": 4,
+    "down": 0,
+    "left": 0,
+    "right": 196
+   },
+   "n": 200
+  },
+  "first/coords": {
+   "accuracy": 0.835,
+   "p_correct": 0.722782010382507,
+   "chance": 0.35625,
+   "move_mass": 0.651120964884758,
+   "choices": {
+    "up": 26,
+    "down": 19,
+    "left": 70,
+    "right": 85
+   },
+   "n": 200
+  },
+  "detour/spaced": {
+   "accuracy": 0.25,
+   "p_correct": 0.2750489208754152,
+   "chance": 0.34,
+   "move_mass": 0.700101997256279,
+   "choices": {
+    "up": 29,
+    "down": 4,
+    "left": 7,
+    "right": 160
+   },
+   "n": 200
+  },
+  "detour/compact": {
+   "accuracy": 0.285,
+   "p_correct": 0.2913765225373208,
+   "chance": 0.34,
+   "move_mass": 0.6945848643779755,
+   "choices": {
+    "up": 3,
+    "down": 0,
+    "left": 0,
+    "right": 197
+   },
+   "n": 200
+  },
+  "detour/coords": {
+   "accuracy": 0.0,
+   "p_correct": 0.0852554187271744,
+   "chance": 0.34,
+   "move_mass": 0.6562802520394325,
+   "choices": {
+    "up": 52,
+    "down": 43,
+    "left": 60,
+    "right": 45
+   },
+   "n": 200
+  },
+  "avoid/spaced": {
+   "accuracy": 0.25,
+   "p_correct": 0.2689552559517324,
+   "chance": 0.25,
+   "move_mass": 0.6659535762667655,
+   "choices": {
+    "up": 28,
+    "down": 3,
+    "left": 0,
+    "right": 169
+   },
+   "n": 200
+  },
+  "avoid/compact": {
+   "accuracy": 0.22,
+   "p_correct": 0.2598894025757909,
+   "chance": 0.25,
+   "move_mass": 0.6997504568099976,
+   "choices": {
+    "up": 18,
+    "down": 1,
+    "left": 0,
+    "right": 181
+   },
+   "n": 200
+  },
+  "avoid/coords": {
+   "accuracy": 0.48,
+   "p_correct": 0.38017896458506584,
+   "chance": 0.25,
+   "move_mass": 0.5961147592961789,
+   "choices": {
+    "up": 31,
+    "down": 17,
+    "left": 56,
+    "right": 96
+   },
+   "n": 200
+  },
+  "avoid/local": {
+   "accuracy": 0.715,
+   "p_correct": 0.42017609253525734,
+   "chance": 0.25,
+   "move_mass": 0.7269615387916565,
+   "choices": {
+    "up": 43,
+    "down": 52,
+    "left": 53,
+    "right": 52
+   },
+   "n": 200
+  }
+ }
+}

@@ -1,0 +1,22 @@
+Qwen/Qwen3.5-27B  (a voice in the dark, right 70%, speaks 50% of the turns; pits 5%: posterior after 'pit' 0.109, after 'no pit' 0.022)
+  argmax  834 spoken turns. Mass on moves towards the named cell: 'pit' 0.527 (n=251), 'no pit' 0.545 (n=583), difference +0.017; a move towards it was taken 0.52 vs 0.55 of the times
+           after an earlier claim proved right: 'pit' 0.517 (n=132), 'no pit' 0.531 (n=302), difference +0.014
+           after an earlier claim proved wrong: 'pit' 0.483 (n=52), 'no pit' 0.559 (n=111), difference +0.076
+           after nothing revealed yet: 'pit' 0.582 (n=67), 'no pit' 0.560 (n=170), difference -0.022
+           'pit' claims that were true 0.583 (n=22) vs false 0.522 (n=229): the model cannot see the cell, so these should agree
+  sample  804 spoken turns. Mass on moves towards the named cell: 'pit' 0.467 (n=257), 'no pit' 0.518 (n=547), difference +0.051; a move towards it was taken 0.50 vs 0.52 of the times
+           after an earlier claim proved right: 'pit' 0.456 (n=128), 'no pit' 0.500 (n=258), difference +0.044
+           after an earlier claim proved wrong: 'pit' 0.350 (n=62), 'no pit' 0.513 (n=116), difference +0.163
+           after nothing revealed yet: 'pit' 0.596 (n=67), 'no pit' 0.550 (n=173), difference -0.046
+           'pit' claims that were true 0.416 (n=28) vs false 0.473 (n=229): the model cannot see the cell, so these should agree
+Qwen/Qwen3.5-9B  (a voice in the dark, right 70%, speaks 50% of the turns; pits 5%: posterior after 'pit' 0.109, after 'no pit' 0.022)
+  argmax  1072 spoken turns. Mass on moves towards the named cell: 'pit' 0.459 (n=341), 'no pit' 0.515 (n=731), difference +0.056; a move towards it was taken 0.47 vs 0.53 of the times
+           after an earlier claim proved right: 'pit' 0.492 (n=166), 'no pit' 0.567 (n=342), difference +0.075
+           after an earlier claim proved wrong: 'pit' 0.460 (n=56), 'no pit' 0.477 (n=149), difference +0.017
+           after nothing revealed yet: 'pit' 0.412 (n=119), 'no pit' 0.463 (n=240), difference +0.051
+           'pit' claims that were true 0.467 (n=34) vs false 0.458 (n=307): the model cannot see the cell, so these should agree
+  sample  978 spoken turns. Mass on moves towards the named cell: 'pit' 0.476 (n=318), 'no pit' 0.517 (n=660), difference +0.042; a move towards it was taken 0.48 vs 0.53 of the times
+           after an earlier claim proved right: 'pit' 0.458 (n=150), 'no pit' 0.504 (n=305), difference +0.045
+           after an earlier claim proved wrong: 'pit' 0.458 (n=86), 'no pit' 0.534 (n=154), difference +0.076
+           after nothing revealed yet: 'pit' 0.526 (n=82), 'no pit' 0.525 (n=201), difference -0.000
+           'pit' claims that were true 0.464 (n=29) vs false 0.477 (n=289): the model cannot see the cell, so these should agree

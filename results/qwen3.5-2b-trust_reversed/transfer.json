@@ -1,0 +1,61 @@
+{
+ "source": "data/qwen3.5-2b-memory",
+ "target": "data/qwen3.5-2b-trust_reversed",
+ "episodes": [
+  2000,
+  2000
+ ],
+ "additive": {
+  "r2_refit_on_target": 0.6131405898300011,
+  "r2_true_bayes_on_target": -1.7946650981903076,
+  "r2_source_on_itself": 0.7447355308885697,
+  "r2_transfer": 0.5983448916306404,
+  "r2_transfer_sources_swapped": 0.5565843129176813
+ },
+ "recency": {
+  "r2_refit_on_target": 0.6490676999638367,
+  "r2_true_bayes_on_target": -1.7946650981903076,
+  "r2_source_on_itself": 0.7701601549816322,
+  "r2_transfer": 0.630239982149464,
+  "r2_transfer_sources_swapped": 0.5855244304906475
+ },
+ "decision": {
+  "r2": 0.4233484783600546,
+  "intercept": -3.253794043689902,
+  "weights_by_attribute": {
+   "legality": {
+    "the audit tool aff.": 0.362,
+    "the audit tool neg.": 0.487,
+    "the user aff.": 0.162,
+    "the user neg.": 0.187
+   },
+   "effect": {
+    "the audit tool aff.": 0.027,
+    "the audit tool neg.": 0.006,
+    "the user aff.": 0.021,
+    "the user neg.": -0.009
+   },
+   "origin": {
+    "the audit tool aff.": 0.062,
+    "the audit tool neg.": 0.039,
+    "the user aff.": 0.013,
+    "the user neg.": 0.038
+   },
+   "signature": {
+    "the audit tool aff.": 0.085,
+    "the audit tool neg.": 0.103,
+    "the user aff.": -0.008,
+    "the user neg.": 0.064
+   }
+  },
+  "mean_abs_weight_by_attribute": {
+   "legality": 0.3,
+   "effect": 0.016,
+   "origin": 0.038,
+   "signature": 0.065
+  },
+  "agreement_with_bayes_decision": 0.9460555555555555,
+  "p_first_answer_where_bayes_says_first": 0.060822319239377975,
+  "p_first_answer_where_bayes_says_second": 0.044229086488485336
+ }
+}

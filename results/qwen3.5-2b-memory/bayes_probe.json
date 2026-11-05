@@ -1,0 +1,159 @@
+{
+ "targets": [
+  "Bayes",
+  "LLM belief",
+  "Alice's evidence",
+  "Bob's evidence",
+  "affirmative evidence",
+  "negated evidence"
+ ],
+ "memory_layers": [
+  2,
+  9,
+  17,
+  22
+ ],
+ "residual_layers": [
+  2,
+  5,
+  8,
+  11,
+  14,
+  17,
+  20,
+  22,
+  23
+ ],
+ "clue counts, linear": {
+  "Bayes": 0.9999999999395546,
+  "LLM belief": 0.745712775671601,
+  "Alice's evidence": 0.9999999999395898,
+  "Bob's evidence": 0.9999999999376146,
+  "affirmative evidence": 0.9999999999387598,
+  "negated evidence": 0.9999999999387992
+ },
+ "answer, linear": {
+  "Bayes": 0.46913554512294875,
+  "LLM belief": 1.0,
+  "Alice's evidence": 0.369041642145736,
+  "Bob's evidence": 0.2201255599467644,
+  "affirmative evidence": 0.6255541482351366,
+  "negated evidence": 0.09226203244705278
+ },
+ "answer, boosted": {
+  "Bayes": 0.5026885680172504,
+  "LLM belief": 0.9993046098536136,
+  "Alice's evidence": 0.3951768700609051,
+  "Bob's evidence": 0.2558035115749038,
+  "affirmative evidence": 0.6877531723584144,
+  "negated evidence": 0.1699318661253911
+ },
+ "memory S": [
+  {
+   "Bayes": 0.8735682140549146,
+   "LLM belief": 0.9334032061201577,
+   "Alice's evidence": 0.8091358011148383,
+   "Bob's evidence": 0.792771135102736,
+   "affirmative evidence": 0.9951543045456188,
+   "negated evidence": 0.995363227927552
+  },
+  {
+   "Bayes": 0.7099662316948429,
+   "LLM belief": 0.8902353159143676,
+   "Alice's evidence": 0.615353785347193,
+   "Bob's evidence": 0.5844650588263213,
+   "affirmative evidence": 0.9222108800047781,
+   "negated evidence": 0.9209110775052943
+  },
+  {
+   "Bayes": 0.7438216417175096,
+   "LLM belief": 0.9112987484535047,
+   "Alice's evidence": 0.6374047014260336,
+   "Bob's evidence": 0.5833646783387831,
+   "affirmative evidence": 0.9600020111886279,
+   "negated evidence": 0.9578403439007253
+  },
+  {
+   "Bayes": 0.7605248457973407,
+   "LLM belief": 0.909100667836749,
+   "Alice's evidence": 0.6606099145854161,
+   "Bob's evidence": 0.63811557049987,
+   "affirmative evidence": 0.9744391690958111,
+   "negated evidence": 0.9711934747282631
+  }
+ ],
+ "residual, mean of turns so far": [
+  {
+   "Bayes": 0.8508441745632029,
+   "LLM belief": 0.924810076293086,
+   "Alice's evidence": 0.7797904294904194,
+   "Bob's evidence": 0.7684299214401732,
+   "affirmative evidence": 0.9920504815332527,
+   "negated evidence": 0.9896084067454319
+  },
+  {
+   "Bayes": 0.7690744625547045,
+   "LLM belief": 0.921426941252363,
+   "Alice's evidence": 0.6598146710716211,
+   "Bob's evidence": 0.6327831580418435,
+   "affirmative evidence": 0.986393601879584,
+   "negated evidence": 0.9818831978284459
+  },
+  {
+   "Bayes": 0.739687724567849,
+   "LLM belief": 0.9027387838994833,
+   "Alice's evidence": 0.6391108705588404,
+   "Bob's evidence": 0.5990334135960793,
+   "affirmative evidence": 0.9630109058288796,
+   "negated evidence": 0.9521429488114779
+  },
+  {
+   "Bayes": 0.6164852965705878,
+   "LLM belief": 0.8579830104613386,
+   "Alice's evidence": 0.4906825352508173,
+   "Bob's evidence": 0.42315993765324206,
+   "affirmative evidence": 0.9175642808922534,
+   "negated evidence": 0.8973327941877174
+  },
+  {
+   "Bayes": 0.5849520791236786,
+   "LLM belief": 0.8451662613167943,
+   "Alice's evidence": 0.4536510906023471,
+   "Bob's evidence": 0.3509040628522351,
+   "affirmative evidence": 0.9006451336178701,
+   "negated evidence": 0.8744684224521881
+  },
+  {
+   "Bayes": 0.608944362060257,
+   "LLM belief": 0.86184808090661,
+   "Alice's evidence": 0.48174988820403436,
+   "Bob's evidence": 0.41402325129607775,
+   "affirmative evidence": 0.9265131389929218,
+   "negated evidence": 0.8979671741310843
+  },
+  {
+   "Bayes": 0.6394236776567851,
+   "LLM belief": 0.848349772971912,
+   "Alice's evidence": 0.5068520086216575,
+   "Bob's evidence": 0.41171223316312444,
+   "affirmative evidence": 0.935992356481554,
+   "negated evidence": 0.9093431572822863
+  },
+  {
+   "Bayes": 0.6520780249854273,
+   "LLM belief": 0.8530169894998938,
+   "Alice's evidence": 0.5231900146092587,
+   "Bob's evidence": 0.42521827213308944,
+   "affirmative evidence": 0.9367745649648294,
+   "negated evidence": 0.9109201442165032
+  },
+  {
+   "Bayes": 0.6531160583789498,
+   "LLM belief": 0.8660813901515213,
+   "Alice's evidence": 0.5250655736442637,
+   "Bob's evidence": 0.44290579972486954,
+   "affirmative evidence": 0.9440867369079482,
+   "negated evidence": 0.9206252902282198
+  }
+ ]
+}

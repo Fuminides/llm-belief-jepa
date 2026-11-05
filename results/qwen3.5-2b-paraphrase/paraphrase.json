@@ -1,0 +1,226 @@
+{
+ "episodes": 2000,
+ "r2_observer_phrasing": 0.6001016494114416,
+ "r2_observer_phrasing_level": 0.6900545865393592,
+ "r2_observer_phrasing_template": 0.7162144495181517,
+ "weight_by_level": {
+  "affirmative": [
+   0.7913064850716276,
+   0.8971208550703875,
+   1.2782245625213782,
+   0.31475251651385333
+  ],
+  "negated": [
+   0.30810264597174286,
+   0.3678642562274615,
+   0.3524096057124555,
+   0.13326273391755752
+  ]
+ },
+ "templates": [
+  {
+   "template": 0,
+   "level": 0,
+   "phrasing": "affirmative",
+   "weight": 0.7933622190287127,
+   "words": 6,
+   "negations": 0,
+   "subordinates": 0
+  },
+  {
+   "template": 0,
+   "level": 0,
+   "phrasing": "negated",
+   "weight": 0.31735891551641504,
+   "words": 7,
+   "negations": 1,
+   "subordinates": 0
+  },
+  {
+   "template": 1,
+   "level": 1,
+   "phrasing": "affirmative",
+   "weight": 0.9199241277248162,
+   "words": 7,
+   "negations": 0,
+   "subordinates": 0
+  },
+  {
+   "template": 1,
+   "level": 1,
+   "phrasing": "negated",
+   "weight": 0.42353545269847953,
+   "words": 8,
+   "negations": 1,
+   "subordinates": 0
+  },
+  {
+   "template": 2,
+   "level": 1,
+   "phrasing": "affirmative",
+   "weight": 0.621965408487743,
+   "words": 7,
+   "negations": 0,
+   "subordinates": 1
+  },
+  {
+   "template": 2,
+   "level": 1,
+   "phrasing": "negated",
+   "weight": 0.29996490130306613,
+   "words": 8,
+   "negations": 1,
+   "subordinates": 1
+  },
+  {
+   "template": 3,
+   "level": 1,
+   "phrasing": "affirmative",
+   "weight": 1.152259407538531,
+   "words": 7,
+   "negations": 0,
+   "subordinates": 0
+  },
+  {
+   "template": 3,
+   "level": 1,
+   "phrasing": "negated",
+   "weight": 0.39756129464052364,
+   "words": 8,
+   "negations": 1,
+   "subordinates": 0
+  },
+  {
+   "template": 4,
+   "level": 2,
+   "phrasing": "affirmative",
+   "weight": 1.2101478040085565,
+   "words": 16,
+   "negations": 0,
+   "subordinates": 2
+  },
+  {
+   "template": 4,
+   "level": 2,
+   "phrasing": "negated",
+   "weight": 0.4739901685436332,
+   "words": 17,
+   "negations": 1,
+   "subordinates": 2
+  },
+  {
+   "template": 5,
+   "level": 2,
+   "phrasing": "affirmative",
+   "weight": 1.254175252715182,
+   "words": 15,
+   "negations": 0,
+   "subordinates": 2
+  },
+  {
+   "template": 5,
+   "level": 2,
+   "phrasing": "negated",
+   "weight": 0.21478811447518917,
+   "words": 16,
+   "negations": 1,
+   "subordinates": 2
+  },
+  {
+   "template": 6,
+   "level": 2,
+   "phrasing": "affirmative",
+   "weight": 1.3706134422303318,
+   "words": 15,
+   "negations": 0,
+   "subordinates": 2
+  },
+  {
+   "template": 6,
+   "level": 2,
+   "phrasing": "negated",
+   "weight": 0.3557219504941157,
+   "words": 16,
+   "negations": 1,
+   "subordinates": 2
+  },
+  {
+   "template": 7,
+   "level": 3,
+   "phrasing": "affirmative",
+   "weight": 0.5007346712892534,
+   "words": 11,
+   "negations": 2,
+   "subordinates": 1
+  },
+  {
+   "template": 7,
+   "level": 3,
+   "phrasing": "negated",
+   "weight": 0.2290838036162136,
+   "words": 10,
+   "negations": 1,
+   "subordinates": 1
+  },
+  {
+   "template": 8,
+   "level": 3,
+   "phrasing": "affirmative",
+   "weight": 0.42437922110371157,
+   "words": 8,
+   "negations": 2,
+   "subordinates": 1
+  },
+  {
+   "template": 8,
+   "level": 3,
+   "phrasing": "negated",
+   "weight": 0.3101034057557717,
+   "words": 7,
+   "negations": 1,
+   "subordinates": 1
+  },
+  {
+   "template": 9,
+   "level": 3,
+   "phrasing": "affirmative",
+   "weight": -0.004843722812175177,
+   "words": 13,
+   "negations": 2,
+   "subordinates": 2
+  },
+  {
+   "template": 9,
+   "level": 3,
+   "phrasing": "negated",
+   "weight": -0.10662907237725824,
+   "words": 12,
+   "negations": 1,
+   "subordinates": 2
+  }
+ ],
+ "divergence": {
+  "no level-3 clue": [
+   0.0,
+   0.148848295211792,
+   0.199484184384346,
+   0.2321176379919052,
+   0.25076422095298767,
+   0.2653801143169403,
+   0.2827904522418976,
+   0.29042890667915344,
+   0.29218125343322754
+  ],
+  "had a level-3 clue": [
+   null,
+   0.9018061757087708,
+   0.5732153654098511,
+   0.5475584864616394,
+   0.5293982625007629,
+   0.526909589767456,
+   0.5126746892929077,
+   0.4864170551300049,
+   0.458750456571579
+  ]
+ }
+}

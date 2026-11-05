@@ -1,0 +1,23 @@
+{
+ "k": 16,
+ "states": 1449,
+ "test_states": 236,
+ "probe_r2_from_u": {
+  "turn": 0.0412411093711853,
+  "lives left": 0.24914830923080444,
+  "hazards in view": 0.03441137075424194,
+  "observations of fire": 0.2491481900215149,
+  "observations of pit": null,
+  "observations of ice": 0.13454043865203857,
+  "P(fire hurts), Bayesian learner": 0.2254202961921692
+ },
+ "nmi_kmeans8": {
+  "turn": 0.17208751112683898,
+  "lives left": 0.06798853749830748,
+  "hazards in view": 0.0343344551237798,
+  "observations of fire": 0.06798853749830747,
+  "observations of pit": 0.0,
+  "observations of ice": 0.06497413922207514,
+  "P(fire hurts), Bayesian learner": 0.0611640280443759
+ }
+}

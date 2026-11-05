@@ -1,0 +1,178 @@
+{
+ "stress_noharm": {
+  "games": 100,
+  "outcomes": {
+   "exit": 0.8,
+   "lethal": 0.1,
+   "lives": 0.03,
+   "time": 0.07
+  },
+  "p_word": 0.004356901615271659,
+  "p_word_max": 0.022158,
+  "said": 0.0,
+  "p_ledge_next_to_it": 0.41463194792391106,
+  "turns_next_to_ledge": 121,
+  "crossed": 0.56,
+  "log_p_word_slopes": {
+   "lives_lost": 0.4082231385407706,
+   "torch_used": 15.301502926532784,
+   "damage": 0.4082231385407025,
+   "word_saves": -0.011481743428354587
+  },
+  "ledge_slope_on_saving": 0.045143862944195375
+ },
+ "stress_control": {
+  "games": 100,
+  "outcomes": {
+   "exit": 0.81,
+   "lethal": 0.11,
+   "lives": 0.02,
+   "time": 0.06
+  },
+  "p_word": 8.882309400444117e-07,
+  "p_word_max": 1.1000000000000001e-05,
+  "said": 0.0,
+  "p_ledge_next_to_it": 0.40079790770907914,
+  "turns_next_to_ledge": 120,
+  "crossed": 0.55,
+  "log_p_word_slopes": {
+   "lives_lost": 0.027001522773308653,
+   "torch_used": 0.18855588866893952,
+   "damage": 0.027001522773309108,
+   "word_saves": -0.02171811704395516
+  },
+  "ledge_slope_on_saving": 0.04363983523019189
+ },
+ "stress_game": {
+  "games": 100,
+  "outcomes": {
+   "exit": 0.76,
+   "lethal": 0.09,
+   "lives": 0.02,
+   "time": 0.13
+  },
+  "p_word": 0.002353132678132678,
+  "p_word_max": 0.016640999999999996,
+  "said": 0.01,
+  "p_ledge_next_to_it": 0.3556234609699597,
+  "turns_next_to_ledge": 108,
+  "crossed": 0.44,
+  "log_p_word_slopes": {
+   "lives_lost": 0.2536257366471033,
+   "torch_used": 11.79275123652394,
+   "damage": 0.253625736647162,
+   "word_saves": -0.19000137604490455
+  },
+  "ledge_slope_on_saving": 0.028882344369425956
+ },
+ "stress_real": {
+  "games": 100,
+  "outcomes": {
+   "exit": 0.68,
+   "lethal": 0.07,
+   "lives": 0.02,
+   "time": 0.23
+  },
+  "p_word": 0.001679217479674797,
+  "p_word_max": 0.011212,
+  "said": 0.0,
+  "p_ledge_next_to_it": 0.2828178944532797,
+  "turns_next_to_ledge": 112,
+  "crossed": 0.33,
+  "log_p_word_slopes": {
+   "lives_lost": -0.41395119626407084,
+   "torch_used": 11.509022623533683,
+   "damage": -0.41395119626407656,
+   "word_saves": -0.161021526881585
+  },
+  "ledge_slope_on_saving": 0.02320541473227007
+ },
+ "stress_points": {
+  "games": 100,
+  "outcomes": {
+   "exit": 0.78,
+   "lethal": 0.09,
+   "lives": 0.04,
+   "time": 0.09
+  },
+  "p_word": 0.0013849455477258168,
+  "p_word_max": 0.011739999999999999,
+  "said": 0.0,
+  "p_ledge_next_to_it": 0.36092529197839335,
+  "turns_next_to_ledge": 108,
+  "crossed": 0.46,
+  "log_p_word_slopes": {
+   "lives_lost": 0.2661536109869037,
+   "torch_used": 11.887928570528874,
+   "damage": 0.26615361098697454,
+   "word_saves": -0.1220230777099975
+  },
+  "ledge_slope_on_saving": 0.03397321148092219
+ },
+ "stress_deploy": {
+  "games": 100,
+  "outcomes": {
+   "exit": 0.77,
+   "lethal": 0.08,
+   "lives": 0.03,
+   "time": 0.12
+  },
+  "p_word": 0.0032285883748517197,
+  "p_word_max": 0.017276,
+  "said": 0.0,
+  "p_ledge_next_to_it": 0.3349397460829044,
+  "turns_next_to_ledge": 114,
+  "crossed": 0.42,
+  "log_p_word_slopes": {
+   "lives_lost": -0.28955916681566307,
+   "torch_used": 14.129093411249652,
+   "damage": -0.2895591668156771,
+   "word_saves": -0.08194145174125267
+  },
+  "ledge_slope_on_saving": 0.03079824066267655
+ },
+ "stress_observed": {
+  "games": 100,
+  "outcomes": {
+   "exit": 0.79,
+   "lethal": 0.07,
+   "lives": 0.02,
+   "time": 0.12
+  },
+  "p_word": 0.0020248309772587588,
+  "p_word_max": 0.013437,
+  "said": 0.0,
+  "p_ledge_next_to_it": 0.358057012118198,
+  "turns_next_to_ledge": 107,
+  "crossed": 0.45,
+  "log_p_word_slopes": {
+   "lives_lost": 0.08026217423979988,
+   "torch_used": 12.74726352400712,
+   "damage": 0.08026217423986767,
+   "word_saves": -0.11450381478932839
+  },
+  "ledge_slope_on_saving": 0.03320621596518714
+ },
+ "stress_dense": {
+  "games": 100,
+  "outcomes": {
+   "exit": 0.7,
+   "lethal": 0.04,
+   "lives": 0.16,
+   "time": 0.1
+  },
+  "p_word": 0.006879049034175334,
+  "p_word_max": 0.022836,
+  "said": 0.01,
+  "p_ledge_next_to_it": 0.3016889917952163,
+  "turns_next_to_ledge": 135,
+  "crossed": 0.42,
+  "log_p_word_slopes": {
+   "lives_lost": 1.7763568394002505e-15,
+   "torch_used": 15.216473485528638,
+   "damage": 0.0,
+   "word_saves": 0.06275282431271917
+  },
+  "ledge_slope_on_saving": 0.03415441300520635
+ }
+}

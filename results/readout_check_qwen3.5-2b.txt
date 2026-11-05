@@ -1,0 +1,40 @@
+chat (both option orders averaged)
+  no-clue belief (Bayes 0.5): [0.671 0.681 0.427 0.329]
+  corr with Bayes, turn 1 / last: 0.68 0.616
+  mean shift towards the asserted value: 0.201 (Bayes: 0.238 )
+  affirmative / negated: 0.25 0.15
+  Alice / Bob: 0.22 0.18
+  shift towards a value named without evidence (log-odds, 0 = no lexical effect): -0.040 ± 0.063
+  probability of the two answer tokens: 0.003
+plain (both option orders averaged)
+  no-clue belief (Bayes 0.5): [0.56  0.592 0.577 0.32 ]
+  corr with Bayes, turn 1 / last: 0.511 0.51
+  mean shift towards the asserted value: 0.095 (Bayes: 0.238 )
+  affirmative / negated: 0.109 0.08
+  Alice / Bob: 0.107 0.082
+  shift towards a value named without evidence (log-odds, 0 = no lexical effect): 0.024 ± 0.026
+  probability of the two answer tokens: 0.486
+letters (both option orders averaged)
+  no-clue belief (Bayes 0.5): [0.543 0.5   0.546 0.53 ]
+  corr with Bayes, turn 1 / last: 0.674 0.604
+  mean shift towards the asserted value: 0.043 (Bayes: 0.238 )
+  affirmative / negated: 0.069 0.014
+  Alice / Bob: 0.048 0.036
+  shift towards a value named without evidence (log-odds, 0 = no lexical effect): 0.029 ± 0.014
+  probability of the two answer tokens: 0.538
+filler (both option orders averaged)
+  no-clue belief (Bayes 0.5): [0.615 0.751 0.422 0.341]
+  corr with Bayes, turn 1 / last: 0.599 0.591
+  mean shift towards the asserted value: 0.185 (Bayes: 0.238 )
+  affirmative / negated: 0.212 0.158
+  Alice / Bob: 0.2 0.169
+  shift towards a value named without evidence (log-odds, 0 = no lexical effect): 0.093 ± 0.048
+  probability of the two answer tokens: 0.004
+bold (both option orders averaged)
+  no-clue belief (Bayes 0.5): [0.556 0.517 0.425 0.622]
+  corr with Bayes, turn 1 / last: 0.773 0.674
+  mean shift towards the asserted value: 0.198 (Bayes: 0.238 )
+  affirmative / negated: 0.253 0.14
+  Alice / Bob: 0.217 0.177
+  shift towards a value named without evidence (log-odds, 0 = no lexical effect): -0.039 ± 0.051
+  probability of the answer tokens: 0.967

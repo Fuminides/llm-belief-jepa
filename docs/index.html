@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="claude:viewport-fit-sides" content="cover">
+<title>What does the model think it knows?</title>
+<meta name="description" content="Project page: a latent model of how an LLM updates its beliefs, with live replays of the clue game and the dungeon.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: one reading column like the project's other docs pages; the two demos are wider plates on it.
+   Colours: the paper's Okabe-Ito set (LLM blue, Bayes vermillion, Alice sky, Bob purple). */
+:root {
+  --bg: #f4f6f9; --surface: #ffffff; --fg: #17202b; --muted: #566170; --line: #d7dde5;
+  --accent: #0072b2; --accent-soft: #e3eff7; --code-bg: #eaeef3; --track: #e4e8ee;
+  --llm: #0072b2; --bayes: #d55e00; --alice: #56b4e9; --bob: #cc79a7;
+  --ok: #0b7a57; --ok-soft: #e1f3ec; --warn: #b5490a; --warn-soft: #fbece2;
+  --display: "IBM Plex Sans Condensed", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10141a; --surface: #171d25; --fg: #e3e8ee; --muted: #9aa6b4; --line: #29323d;
+    --accent: #5ab4e8; --accent-soft: #15283a; --code-bg: #1d2531; --track: #262f3b;
+    --llm: #4aa3dd; --bayes: #f08a3c; --alice: #56b4e9; --bob: #d58cb8;
+    --ok: #46c79c; --ok-soft: #13291f; --warn: #f09a5a; --warn-soft: #33221a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10141a; --surface: #171d25; --fg: #e3e8ee; --muted: #9aa6b4; --line: #29323d;
+  --accent: #5ab4e8; --accent-soft: #15283a; --code-bg: #1d2531; --track: #262f3b;
+  --llm: #4aa3dd; --bayes: #f08a3c; --alice: #56b4e9; --bob: #d58cb8;
+  --ok: #46c79c; --ok-soft: #13291f; --warn: #f09a5a; --warn-soft: #33221a; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 80px; }
+.page { max-width: 1040px; margin: 0 auto; display: grid; gap: 56px; }
+.page > *, .demo > *, .toolbar > * { min-width: 0; }
+.prose { max-width: 70ch; }
+h1, h2, h3 { font-family: var(--display); line-height: 1.15; text-wrap: balance; margin: 0; }
+h1 { font-size: clamp(30px, 4.6vw, 44px); font-weight: 600; }
+h2 { font-size: 26px; font-weight: 600; margin-bottom: 12px; }
+h3 { font-size: 16px; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+p { margin: 0 0 14px; }
+a { color: var(--accent); }
+.eyebrow { font-family: var(--display); font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+header .byline { margin-top: 14px; color: var(--muted); }
+header .byline b { color: var(--fg); font-weight: 500; }
+.links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 22px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px; border-radius: 6px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--fg); font-family: var(--display); font-size: 15px; font-weight: 600; text-decoration: none; cursor: pointer; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn:focus-visible, button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.btn .tag { font-size: 11px; font-weight: 500; letter-spacing: .06em; text-transform: uppercase; padding: 2px 6px; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+.btn.primary .tag { background: rgba(255,255,255,.2); color: #fff; }
+.games { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+.games > div { border-top: 2px solid var(--accent); padding-top: 12px; }
+.games h3 { color: var(--fg); text-transform: none; letter-spacing: 0; font-size: 18px; margin-bottom: 6px; }
+ul.findings { padding-left: 20px; margin: 0; max-width: 72ch; }
+ul.findings li { margin-bottom: 10px; }
+ul.findings b { font-weight: 600; }
+
+/* demo plates */
+.demo { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 22px; display: grid; gap: 18px; }
+.demo .lead { max-width: 72ch; margin: 0; color: var(--muted); }
+.toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 18px; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
+.seg button { font: 600 14px var(--display); padding: 8px 14px; border: 0; background: transparent; color: var(--fg); cursor: pointer; border-right: 1px solid var(--line); }
+.seg button:last-child { border-right: 0; }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+select { font: 500 14px var(--body); padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); color: var(--fg); width: 100%; max-width: 520px; }
+.transport { display: flex; align-items: center; gap: 8px; flex: 1 1 320px; min-width: 0; }
+.transport button { width: 36px; height: 36px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; font-size: 15px; display: inline-grid; place-items: center; }
+.transport button.play { background: var(--accent); border-color: var(--accent); color: #fff; }
+.transport input[type=range] { flex: 1; min-width: 100px; accent-color: var(--accent); }
+.transport .turn { font-family: var(--mono); font-size: 13px; color: var(--muted); min-width: 7ch; text-align: right; font-variant-numeric: tabular-nums; }
+.note { background: var(--accent-soft); border-radius: 6px; padding: 10px 14px; font-size: 15px; max-width: none; }
+.note b { font-weight: 600; }
+
+/* clue demo */
+.clue-grid { display: grid; grid-template-columns: minmax(240px, 1fr) minmax(280px, 1.3fr) minmax(240px, 1fr); gap: 22px; }
+@media (max-width: 900px) { .clue-grid { grid-template-columns: 1fr; } }
+.clue-grid > div { min-width: 0; }
+.clues { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.clues li { display: grid; grid-template-columns: 3.2em 22px 1fr; align-items: center; gap: 8px; padding: 5px 8px; border-radius: 6px; font-size: 14px; transition: opacity .3s, background .3s; }
+.clues li .n { font-family: var(--mono); font-size: 12px; color: var(--muted); }
+.clues li.intro { grid-template-columns: 3.2em 1fr; }
+.clues li.future { opacity: .28; }
+.clues li.now { background: var(--accent-soft); }
+.badge { width: 20px; height: 20px; border-radius: 50%; display: inline-grid; place-items: center; color: #fff; font: 600 11px var(--display); }
+.badge.Alice { background: var(--alice); } .badge.Bob { background: var(--bob); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 13px; color: var(--muted); align-items: center; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.dot { width: 12px; height: 12px; border-radius: 50%; background: var(--llm); display: inline-block; }
+.diamond { width: 10px; height: 10px; background: var(--bayes); transform: rotate(45deg); display: inline-block; margin: 0 2px; }
+.beliefs { display: grid; gap: 14px; }
+.belief { display: grid; grid-template-columns: 1fr; gap: 4px; }
+.belief .names { display: flex; justify-content: space-between; font-size: 13px; color: var(--muted); }
+.belief .names b { color: var(--fg); font-weight: 500; text-transform: capitalize; }
+.belief .track { position: relative; height: 22px; background: var(--track); border-radius: 11px; }
+.belief .track::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; width: 1px; background: var(--line); }
+.belief .m { position: absolute; top: 50%; transition: left .5s cubic-bezier(.4,0,.2,1); }
+.belief .m.llm { width: 16px; height: 16px; border-radius: 50%; background: var(--llm); border: 2px solid var(--surface); transform: translate(-50%, -50%); z-index: 2; }
+.belief .m.bayes { width: 12px; height: 12px; background: var(--bayes); border: 2px solid var(--surface); transform: translate(-50%, -50%) rotate(45deg); z-index: 1; }
+.belief .vals { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.belief .vals span { white-space: nowrap; }
+.chart { width: 100%; height: auto; display: block; font-family: var(--body); }
+.chart text { fill: var(--muted); font-size: 11px; }
+.chart .grid line { stroke: var(--line); stroke-width: 1; }
+.chart .axis { stroke: var(--line); }
+.chart .gap { fill: none; stroke: var(--bayes); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.chart .area { fill: var(--bayes); opacity: .12; }
+.chart .ghost { fill: none; stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 4; opacity: .5; }
+.chart .end { fill: var(--bayes); stroke: var(--surface); stroke-width: 2; }
+.chart .end-label { fill: var(--fg); font-weight: 600; font-size: 12px; }
+.chart .hit { fill: transparent; }
+.tip { position: absolute; pointer-events: none; background: var(--fg); color: var(--bg); font: 12px var(--mono); padding: 6px 8px; border-radius: 4px; white-space: pre; z-index: 5; display: none; }
+.chart-wrap { position: relative; }
+.question { font-family: var(--mono); font-size: 12.5px; background: var(--code-bg); border-radius: 6px; padding: 10px 12px; white-space: pre-wrap; color: var(--fg); }
+
+/* dungeon demo */
+.dgn-grid { display: grid; grid-template-columns: minmax(280px, 1fr) minmax(280px, 1.2fr); gap: 22px; }
+@media (max-width: 820px) { .dgn-grid { grid-template-columns: 1fr; } }
+.dgn-grid > div { min-width: 0; display: grid; gap: 12px; align-content: start; }
+canvas.map { width: 100%; max-width: 440px; aspect-ratio: 1; image-rendering: pixelated; image-rendering: crisp-edges; border-radius: 6px; background: #000; display: block; }
+.hud { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 18px; font-family: var(--mono); font-size: 13px; color: var(--muted); }
+.hud .hearts { display: inline-flex; gap: 2px; }
+.hud canvas { width: 20px; height: 20px; image-rendering: pixelated; }
+.outcome { font: 600 13px var(--display); letter-spacing: .04em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; }
+.outcome.exit { background: var(--ok-soft); color: var(--ok); }
+.outcome.bad { background: var(--warn-soft); color: var(--warn); }
+.outcome.playing { background: var(--accent-soft); color: var(--accent); }
+.legend-tiles { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--muted); }
+.legend-tiles span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-tiles canvas { width: 20px; height: 20px; image-rendering: pixelated; border-radius: 2px; }
+.reads { font-family: var(--mono); font-size: 12.5px; line-height: 1.5; background: var(--code-bg); border-radius: 6px; padding: 12px 14px; white-space: pre-wrap; max-height: 300px; overflow: auto; }
+details { font-size: 14px; color: var(--muted); }
+details summary { cursor: pointer; font-family: var(--display); font-weight: 600; color: var(--fg); }
+details .reads { max-height: 260px; margin-top: 8px; }
+.moves { display: grid; gap: 6px; }
+.move { display: grid; grid-template-columns: 4.5em 1fr 4ch auto; align-items: center; gap: 10px; font-size: 14px; }
+.move .name { font-family: var(--mono); font-size: 13px; }
+.move .bar { height: 14px; background: var(--track); border-radius: 4px; overflow: hidden; position: relative; }
+.move .bar.wall { background: repeating-linear-gradient(45deg, var(--track), var(--track) 4px, var(--line) 4px, var(--line) 6px); }
+.move .bar i { position: absolute; inset: 0 auto 0 0; background: var(--llm); border-radius: 4px; transition: width .4s; opacity: .55; }
+.move.taken .bar i { opacity: 1; }
+.move .p { font-family: var(--mono); font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; text-align: right; }
+.move .what { font-size: 12px; color: var(--muted); }
+.move.taken .name { font-weight: 600; }
+.check { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.cite pre { background: var(--code-bg); border-radius: 6px; padding: 14px 16px; font: 12.5px var(--mono); overflow-x: auto; margin: 0; }
+footer { color: var(--muted); font-size: 14px; }
+@media (prefers-reduced-motion: reduce) { .belief .m, .clues li, .move .bar i { transition: none; } }
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <div class="eyebrow">Working document · 2026</div>
+  <h1>What does the model think it knows? A latent model of how an LLM updates its beliefs</h1>
+  <p class="byline"><b>Javier Fumanal-Idocin</b></p>
+  <div class="links">
+    <a class="btn primary" href="paper.pdf">Paper <span class="tag">PDF</span></a>
+    <a class="btn" href="https://github.com/Fuminides/llm-belief-jepa">Code <span class="tag">GitHub</span></a>
+    <a class="btn" href="#clue-demo">Clue game demo</a>
+    <a class="btn" href="#dungeon-demo">Dungeon demo</a>
+  </div>
+</header>
+
+<section class="prose">
+  <h2>TL;DR</h2>
+  <p class="note">An LLM playing a game holds a belief about the hidden state of the game. We read that belief in the recurrent memory of Qwen3.5 (2B, 9B, 27B), compare it with the exact Bayesian posterior, and train an anchored JEPA on the memory to learn how a clue or a move changes it. The departure from Bayes is structured and the same at every size: a negation counts half, the sources weigh nearer each other than stated, the latest clue weighs most. The information to be right is in the state; the update misuses it. The belief is one and held in every layer. The JEPA's prediction error flags unusual input, not wrong answers. In the dungeon only the 27B plays the game, and it breaks a forbidden rule once in 800 games.</p>
+</section>
+
+<section class="prose">
+  <h2>Abstract</h2>
+  <p>When an LLM solves a problem it is holding a belief of the state that is updated as new evidence arrives. Prior mechanistic interpretability literature has used linear probes to understand where and how this belief state "lives" inside the model and how it affects its decisions. However, interacting with this belief state or understanding its internal dynamics is still problematic. In this work, first we locate the belief state in two games, a clue game and a text dungeon, where it is well defined and can be intervened, and we compare it with a Bayes-optimal model. Secondly, we use an anchored Joint Embedding Predictive Architecture (JEPA), whose latent is tied to the belief the LLM states, to learn the transition between different moments in the game, and to understand the "world model", or lack of it, of the LLM. Based on its latent space, we are able to understand the effect of each clue and why the LLM shows significant differences with the Bayes optimal solutions. For our experiments, we use Qwen3.5-2B, 9B and 27B.</p>
+</section>
+
+<section>
+  <h2>Two games</h2>
+  <div class="games">
+    <div>
+      <h3>The clue game</h3>
+      <p>A secret object has four binary properties. Two sources, Alice (right 90% of the time) and Bob (60%), give clues, affirmative or negated, that may contradict each other. After each clue the LLM is asked about each property and its belief is read from the next-token probabilities. The posterior per property is exact, so every answer has a Bayesian reference.</p>
+    </div>
+    <div>
+      <h3>The dungeon</h3>
+      <p>A text maze in the first person. The LLM reads what it sees along its line of sight, its lives and the torch left, and answers with one move per turn. Fire burns, pits kill, ice slides, and the exit starts out of view. The game has no tractable optimal policy, but the one-step risk of each move is exact, and some moves are plainly irrational: a step into a pit it can see, or into a wall.</p>
+    </div>
+  </div>
+</section>
+
+<section id="clue-demo" class="demo">
+  <div>
+    <h2>Clue game</h2>
+    <p class="lead">Three episodes of Qwen3.5-2B from the experiments. Press play or drag the slider. Circle: the belief the 2B states. Diamond: the Bayesian posterior given the same clues and the stated reliabilities. The chart follows the distance between the two.</p>
+  </div>
+  <div class="toolbar">
+    <div class="seg" id="clue-cases" role="group" aria-label="Episode"></div>
+    <div class="transport">
+      <button id="clue-back" aria-label="Previous clue">&#9664;</button>
+      <button id="clue-play" class="play" aria-label="Play">&#9654;</button>
+      <button id="clue-fwd" aria-label="Next clue">&#9654;&#9654;</button>
+      <input type="range" id="clue-turn" min="0" max="8" value="0" step="1" aria-label="Clue">
+      <span class="turn" id="clue-turn-label">clue 0/8</span>
+    </div>
+  </div>
+  <p class="note" id="clue-note"></p>
+  <div class="clue-grid">
+    <div>
+      <h3>Model input</h3>
+      <ol class="clues" id="clue-list"></ol>
+      <div class="question" id="clue-question" style="margin-top:10px"></div>
+    </div>
+    <div>
+      <h3>Model output: belief per property</h3>
+      <div class="legend"><span><i class="dot"></i>Qwen3.5-2B</span><span><i class="diamond"></i>Bayes</span><span>Alice <i class="badge Alice" style="width:16px;height:16px;font-size:9px">A</i> right 90%</span><span>Bob <i class="badge Bob" style="width:16px;height:16px;font-size:9px">B</i> right 60%</span></div>
+      <div class="beliefs" id="clue-beliefs" style="margin-top:12px"></div>
+    </div>
+    <div>
+      <h3>Distance from Bayes</h3>
+      <div class="chart-wrap">
+        <svg class="chart" id="clue-chart" viewBox="0 0 340 230" role="img" aria-label="Mean absolute gap between the model's belief and the Bayesian posterior, by clue"></svg>
+        <div class="tip" id="clue-tip"></div>
+      </div>
+      <p style="font-size:13px;color:var(--muted);margin:6px 0 0">Mean over the four properties of |P<sub>2B</sub> − P<sub>Bayes</sub>|. The dotted line is the rest of the episode.</p>
+    </div>
+  </div>
+</section>
+
+<section id="dungeon-demo" class="demo">
+  <div>
+    <h2>Dungeon</h2>
+    <p class="lead">Saved games played back move by move. The map shows the cells in view (lit), the cells seen before (dim) and the path so far. On the right, the model input for the turn and the probability of each move.</p>
+  </div>
+  <div class="toolbar">
+    <select id="dgn-game" aria-label="Game"></select>
+    <div class="transport">
+      <button id="dgn-back" aria-label="Previous turn">&#9664;</button>
+      <button id="dgn-play" class="play" aria-label="Play">&#9654;</button>
+      <button id="dgn-fwd" aria-label="Next turn">&#9654;&#9654;</button>
+      <input type="range" id="dgn-turn" min="0" max="10" value="0" step="1" aria-label="Turn">
+      <span class="turn" id="dgn-turn-label">turn 0/10</span>
+    </div>
+    <label class="check"><input type="checkbox" id="dgn-reveal"> reveal the whole level</label>
+  </div>
+  <div class="dgn-grid">
+    <div>
+      <div class="hud">
+        <span class="hearts" id="dgn-hearts"></span>
+        <span id="dgn-torch"></span>
+        <span class="outcome playing" id="dgn-outcome">playing</span>
+      </div>
+      <canvas class="map" id="dgn-map" width="176" height="176"></canvas>
+      <div class="legend-tiles" id="dgn-legend"></div>
+    </div>
+    <div>
+      <h3>Model input</h3>
+      <div class="reads" id="dgn-text"></div>
+      <h3>Model output</h3>
+      <div class="moves" id="dgn-moves"></div>
+      <details><summary>Rules (first turn)</summary><div class="reads" id="dgn-rules"></div></details>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Findings</h2>
+  <ul class="findings">
+    <li><b>The departure from Bayes is structured.</b> In every model size a negation weighs about half an assertion, the two sources weigh nearer each other than their stated reliabilities, the latest clue on a property weighs most, and a clue moves the belief less the more the model already believes it. These regularities fade with size: the 27B is the first to give a stated 90% source its Bayesian weight.</li>
+    <li><b>The belief is one, and it is everywhere.</b> Every layer's memory supports the same observer; the belief can be read from any one place and changed only by writing every place.</li>
+    <li><b>The information is there; the update is not Bayesian.</b> On the turns where the answer misses the posterior, a probe of the early layers recovers it almost exactly. The free numbers of the anchored JEPA hold recency, contradiction and the source, the bookkeeping the LLM uses and Bayes would not.</li>
+    <li><b>The anchored JEPA forecasts what the actions alone cannot.</b> It beats a model that only sees which clues arrived where the state carries something the clue ids do not give cheaply: the wording for the 2B, the belief itself for the 9B and 27B. Its prediction error flags unusual input, contradiction and convoluted wording, so it monitors what the model reads rather than what it answers.</li>
+    <li><b>In the dungeon only the 27B plays the game.</b> It reaches the exit in 73% of 100 medium levels without thinking and 82% with the previous turn's thought kept; the smaller models walk into walls until the torch runs out. Its remaining errors are pits on the straight line to a door, which thinking avoids every time.</li>
+    <li><b>Rule-breaking under pressure is rare and ordered.</b> Given a forbidden word that makes every hazard harmless, the 27B says it once in 800 games, and puts less probability on it the more real the stated harm. A promised reward does not move it; a spent torch does.</li>
+  </ul>
+</section>
+
+<section class="cite prose">
+  <h2>Cite</h2>
+  <pre id="bibtex">@unpublished{fumanalidocin2026belief,
+  title  = {What does the model think it knows? A latent model of how an {LLM} updates its beliefs},
+  author = {Fumanal-Idocin, Javier},
+  year   = {2026},
+  note   = {Working document}
+}</pre>
+</section>
+
+<footer>Episodes and games on this page are taken from the saved experimental data (Qwen3.5-2B clue game; Qwen3.5-2B, 9B and 27B dungeon games on medium levels).</footer>
+</div>
+
+<script src="demo/clue_data.js"></script>
+<script src="demo/dungeon_data.js"></script>
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------------- a small transport: play/pause, step, slider ---------------- */
+  function transport(ids, period, onTurn) {
+    const back = $(ids.back), play = $(ids.play), fwd = $(ids.fwd), range = $(ids.range), label = $(ids.label);
+    let t = 0, max = +range.max, timer = null;
+    function set(k, loop) {
+      t = Math.max(0, Math.min(max, k)); range.value = t; label.textContent = `${ids.word} ${t}/${max}`; onTurn(t);
+      if (t === max && timer && !loop) stop();
+    }
+    function tick() { if (t >= max) { stop(); return; } set(t + 1, true); }
+    function start() { if (t >= max) set(0, true); timer = setInterval(tick, period); play.innerHTML = "&#10074;&#10074;"; play.setAttribute("aria-label", "Pause"); }
+    function stop() { clearInterval(timer); timer = null; play.innerHTML = "&#9654;"; play.setAttribute("aria-label", "Play"); }
+    play.addEventListener("click", () => timer ? stop() : start());
+    back.addEventListener("click", () => { stop(); set(t - 1); });
+    fwd.addEventListener("click", () => { stop(); set(t + 1); });
+    range.addEventListener("input", () => { stop(); set(+range.value); });
+    return { set, stop, reset(newMax) { stop(); max = newMax; range.max = newMax; set(0); }, get t() { return t; } };
+  }
+
+  /* ---------------- the clue game ---------------- */
+  const C = window.CLUE_DATA;
+  let caseIdx = 0;
+  const caseBtns = C.cases.map((c, i) => {
+    const b = document.createElement("button"); b.type = "button"; b.textContent = c.title;
+    b.setAttribute("aria-pressed", i === 0); b.addEventListener("click", () => selectCase(i)); $("clue-cases").appendChild(b); return b;
+  });
+  const beliefRows = C.attributes.map(([attr, v0, v1]) => {
+    const row = document.createElement("div"); row.className = "belief";
+    row.innerHTML = `<div class="names"><span>${v1}</span><b>${attr}</b><span>${v0}</span></div>
+      <div class="track"><span class="m bayes" title="Bayes"></span><span class="m llm" title="Qwen3.5-2B"></span></div>
+      <div class="vals"><span></span><span>P(${v0})  2B <span class="vl"></span> · Bayes <span class="vb"></span></span></div>`;
+    $("clue-beliefs").appendChild(row);
+    return { llm: row.querySelector(".m.llm"), bayes: row.querySelector(".m.bayes"), vl: row.querySelector(".vl"), vb: row.querySelector(".vb") };
+  });
+  const gap = (c, k) => c.llm[k].reduce((s, p, j) => s + Math.abs(p - c.bayes[k][j]), 0) / c.llm[k].length;
+
+  function renderClueList(c) {
+    const ol = $("clue-list"); ol.innerHTML = "";
+    const li0 = document.createElement("li"); li0.className = "intro"; li0.innerHTML = `<span class="n">intro</span><span>${C.intro}</span>`; ol.appendChild(li0);
+    c.clues.forEach((cl, i) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span class="n">clue ${i + 1}</span><i class="badge ${cl.source}">${cl.source[0]}</i><span>${cl.text}</span>`;
+      ol.appendChild(li);
+    });
+    $("clue-question").textContent = "Question: Is the object " + C.attributes.map(a => a[1] + " or " + a[2]).join("? Is it ") + "?\nAnswer: The object is ___   (one question per property; the belief is read from the answer's token probabilities)";
+  }
+
+  function drawChart(c, t) {
+    const svg = $("clue-chart"); svg.innerHTML = "";
+    const W = 340, H = 230, L = 40, R = 16, T = 14, B = 34, n = c.llm.length - 1;
+    const gaps = c.llm.map((_, k) => gap(c, k));
+    const ymax = Math.max(0.4, Math.ceil(Math.max(...gaps) * 5) / 5);
+    const x = (k) => L + (W - L - R) * k / n, y = (v) => T + (H - T - B) * (1 - v / ymax);
+    const el = (tag, attrs, text) => { const e = document.createElementNS("http://www.w3.org/2000/svg", tag); for (const a in attrs) e.setAttribute(a, attrs[a]); if (text != null) e.textContent = text; svg.appendChild(e); return e; };
+    for (let v = 0; v <= ymax + 1e-9; v += 0.2) {
+      const g = el("g", { class: "grid" }); const ln = document.createElementNS("http://www.w3.org/2000/svg", "line");
+      ln.setAttribute("x1", L); ln.setAttribute("x2", W - R); ln.setAttribute("y1", y(v)); ln.setAttribute("y2", y(v)); g.appendChild(ln);
+      el("text", { x: L - 6, y: y(v) + 4, "text-anchor": "end" }, v.toFixed(1));
+    }
+    el("line", { class: "axis", x1: L, x2: W - R, y1: y(0), y2: y(0) });
+    for (let k = 0; k <= n; k++) el("text", { x: x(k), y: H - B + 16, "text-anchor": "middle" }, k);
+    el("text", { x: (L + W - R) / 2, y: H - 4, "text-anchor": "middle" }, "clues read");
+    const pts = (upto) => gaps.slice(0, upto + 1).map((g, k) => `${x(k)},${y(g)}`);
+    el("polyline", { class: "ghost", points: pts(n).join(" ") });
+    el("polygon", { class: "area", points: [`${x(0)},${y(0)}`, ...pts(t), `${x(t)},${y(0)}`].join(" ") });
+    el("polyline", { class: "gap", points: pts(t).join(" ") });
+    el("circle", { class: "end", cx: x(t), cy: y(gaps[t]), r: 5 });
+    el("text", { class: "end-label", x: x(t) + (t > n - 2 ? -8 : 8), y: y(gaps[t]) - 9, "text-anchor": t > n - 2 ? "end" : "start" }, gaps[t].toFixed(2));
+    const tip = $("clue-tip"), wrap = tip.parentElement;
+    for (let k = 0; k <= n; k++) {
+      const w = (W - L - R) / n;
+      const r = el("rect", { class: "hit", x: x(k) - w / 2, y: T, width: w, height: H - T - B });
+      r.addEventListener("mousemove", (ev) => {
+        const b = wrap.getBoundingClientRect();
+        tip.style.display = "block"; tip.style.left = Math.min(ev.clientX - b.left + 12, b.width - 170) + "px"; tip.style.top = (ev.clientY - b.top - 10) + "px";
+        tip.textContent = `after ${k} clue${k === 1 ? "" : "s"}: mean ${gaps[k].toFixed(2)}\n` + C.attributes.map((a, j) => `${a[0].padEnd(9)} ${Math.abs(c.llm[k][j] - c.bayes[k][j]).toFixed(2)}`).join("\n");
+      });
+      r.addEventListener("mouseleave", () => { tip.style.display = "none"; });
+    }
+  }
+
+  function showClueTurn(t) {
+    const c = C.cases[caseIdx];
+    [...$("clue-list").children].forEach((li, i) => { li.classList.toggle("future", i > t); li.classList.toggle("now", i === t); });
+    beliefRows.forEach((r, j) => {
+      r.llm.style.left = (100 * c.llm[t][j]) + "%"; r.bayes.style.left = (100 * c.bayes[t][j]) + "%";
+      r.vl.textContent = c.llm[t][j].toFixed(2); r.vb.textContent = c.bayes[t][j].toFixed(2);
+    });
+    drawChart(c, t);
+  }
+  const clueT = transport({ back: "clue-back", play: "clue-play", fwd: "clue-fwd", range: "clue-turn", label: "clue-turn-label", word: "clue" }, reduced ? 2000 : 1500, showClueTurn);
+  function selectCase(i) {
+    caseIdx = i; caseBtns.forEach((b, j) => b.setAttribute("aria-pressed", j === i));
+    const c = C.cases[i]; $("clue-note").innerHTML = `<b>${c.title}.</b> ${c.note}`;
+    renderClueList(c); clueT.reset(c.clues.length);
+  }
+  selectCase(0);
+
+  /* ---------------- the dungeon ---------------- */
+  const D = window.DUNGEON_DATA, TS = 16;
+  const pal = D.palette.map(h => [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)]);
+  function spriteCanvas(names, dim) {  // names drawn in order over each other; dim: the "seen before" shading of pixelart.py
+    const cv = document.createElement("canvas"); cv.width = TS; cv.height = TS;
+    const ctx = cv.getContext("2d"), img = ctx.createImageData(TS, TS), px = img.data;
+    for (const name of names) D.sprites[name].forEach((row, yy) => [...row].forEach((ch, xx) => {
+      if (ch === ".") return; const [r, g, b] = pal[parseInt(ch, 16)], o = 4 * (yy * TS + xx);
+      if (dim) { const m = (r + g + b) / 3; px[o] = r * .3 + m * .1; px[o + 1] = g * .3 + m * .1; px[o + 2] = b * .3 + m * .1; }
+      else { px[o] = r; px[o + 1] = g; px[o + 2] = b; }
+      px[o + 3] = 255;
+    }));
+    ctx.putImageData(img, 0, 0); return cv;
+  }
+  const tiles = {}, dimTiles = {};
+  for (const name of Object.values(D.symbols)) { const layers = name === "floor" ? ["floor"] : (name === "wall" ? ["wall"] : ["floor", name]); tiles[name] = spriteCanvas(layers); dimTiles[name] = spriteCanvas(layers, true); }
+  const playerTile = spriteCanvas(["player"]), heart = spriteCanvas(["heart"]), heartLost = spriteCanvas(["heart"], true);
+  const legend = [["door", "door"], ["fire", "fire: −1 life per turn"], ["pit", "pit: death"], ["ice", "ice: may slide 1 more"], ["exit", "exit"], ["player", "the player"]];
+  legend.forEach(([name, label]) => { const s = document.createElement("span"); const cv = name === "player" ? spriteCanvas(["floor", "player"]) : tiles[name]; s.appendChild(cv); s.appendChild(document.createTextNode(label)); $("dgn-legend").appendChild(s); });
+
+  D.games.forEach((g, i) => { const o = document.createElement("option"); o.value = i; o.textContent = `${g.model} (${g.policy}) · level ${g.seed}: ${g.label}`; $("dgn-game").appendChild(o); });
+  let game = D.games[0];
+  const key = (c) => c[0] * 1000 + c[1];
+  const stepOf = { up: [-1, 0], down: [1, 0], left: [0, -1], right: [0, 1] };
+
+  function drawMap(t) {
+    const cv = $("dgn-map"), rows = game.grid.length, cols = game.grid[0].length;
+    if (cv.width !== cols * TS) { cv.width = cols * TS; cv.height = rows * TS; }
+    const ctx = cv.getContext("2d"); ctx.imageSmoothingEnabled = false;
+    ctx.fillStyle = "#000"; ctx.fillRect(0, 0, cv.width, cv.height);
+    const n = game.log.length, reveal = $("dgn-reveal").checked;
+    const lit = new Set(t < n ? game.log[t].seen.map(key) : [key(game.final)]);
+    const seen = new Set(); for (let k = 0; k < Math.min(t, n); k++) game.log[k].seen.forEach(c => seen.add(key(c)));
+    for (let r = 0; r < rows; r++) for (let c = 0; c < cols; c++) {
+      const name = D.symbols[game.grid[r][c]], k = r * 1000 + c;
+      if (reveal || lit.has(k)) ctx.drawImage(tiles[name], c * TS, r * TS);
+      else if (seen.has(k)) ctx.drawImage(dimTiles[name], c * TS, r * TS);
+    }
+    const path = game.log.slice(0, Math.min(t, n - 1) + 1).map(x => x.cell); if (t >= n) path.push(game.final);
+    if (path.length > 1) {
+      ctx.strokeStyle = "#ffec27"; ctx.lineWidth = 2; ctx.beginPath();
+      path.forEach(([r, c], i) => { const x = c * TS + TS / 2, y = r * TS + TS / 2; i ? ctx.lineTo(x, y) : ctx.moveTo(x, y); }); ctx.stroke();
+      ctx.fillStyle = "#00e436"; ctx.fillRect(path[0][1] * TS + 6, path[0][0] * TS + 6, 4, 4);
+    }
+    const here = t < n ? game.log[t].cell : game.final;
+    ctx.drawImage(playerTile, here[1] * TS, here[0] * TS);
+  }
+
+  function showDungeonTurn(t) {
+    const n = game.log.length, last = t >= n, turn = last ? game.log[n - 1] : game.log[t];
+    drawMap(t);
+    const hearts = $("dgn-hearts"); hearts.innerHTML = "";
+    const lives = last ? game.lives : turn.lives;
+    for (let i = 0; i < D.lives; i++) { const cv = document.createElement("canvas"); cv.width = TS; cv.height = TS; cv.getContext("2d").drawImage(i < lives ? heart : heartLost, 0, 0); hearts.appendChild(cv); }
+    const torch = last ? Math.max(0, D.torch - game.turns) : turn.torch;
+    $("dgn-torch").textContent = `torch ${torch} turn${torch === 1 ? "" : "s"} left · turn ${Math.min(t, n)} of ${n}`;
+    const oc = $("dgn-outcome");
+    if (!last) { oc.className = "outcome playing"; oc.textContent = "playing"; }
+    else { const won = game.outcome === "exit"; oc.className = "outcome " + (won ? "exit" : "bad");
+      oc.textContent = won ? `reached the exit (shortest path ${game.shortest})` : game.outcome === "lethal" ? "fell into a pit" : game.outcome === "lives" ? "lost all lives on fire" : "the torch ran out"; }
+    $("dgn-text").textContent = last ? game.end : turn.text;
+    const mv = $("dgn-moves"); mv.innerHTML = "";
+    if (!last) D.moves.forEach((m, j) => {
+      const [dr, dc] = stepOf[m], nr = turn.cell[0] + dr, nc = turn.cell[1] + dc;
+      const name = D.symbols[game.grid[nr][nc]];
+      const what = { wall: "a wall: ruled out", floor: "an empty cell", fire: "a fire cell", pit: "a pit", ice: "an ice cell", door: "a door", exit: "the exit" }[name] || name;
+      const row = document.createElement("div"); row.className = "move" + (m === turn.move ? " taken" : "");
+      row.innerHTML = `<span class="name">${m}${m === turn.move ? " ◀" : ""}</span><span class="bar${name === "wall" ? " wall" : ""}"><i style="width:${100 * turn.p[j]}%"></i></span><span class="p">${turn.p[j].toFixed(2)}</span><span class="what">${what}</span>`;
+      mv.appendChild(row);
+    });
+    else { const d = document.createElement("div"); d.className = "what"; d.style.cssText = "font-size:14px;color:var(--muted)"; d.textContent = `${game.turns} turns played; the shortest safe path was ${game.shortest}.`; mv.appendChild(d); }
+  }
+  const dgnT = transport({ back: "dgn-back", play: "dgn-play", fwd: "dgn-fwd", range: "dgn-turn", label: "dgn-turn-label", word: "turn" }, reduced ? 1500 : 900, showDungeonTurn);
+  function selectGame(i) { game = D.games[i]; $("dgn-rules").textContent = game.rules; dgnT.reset(game.log.length); }
+  $("dgn-game").addEventListener("change", (e) => selectGame(+e.target.value));
+  $("dgn-reveal").addEventListener("change", () => drawMap(dgnT.t));
+  selectGame(0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+ "r2_predicted_vs_llm_shift": 0.832566416637347,
+ "spillover_model": 0.13362248241901398,
+ "spillover_llm": 0.15994657576084137,
+ "bayes_shift": {
+  "Alice": 2.1972245773362196,
+  "Bob": 0.4054651081081642
+ },
+ "types": {
+  "Alice aff.": {
+   "mean_shift_model": 1.1835035281456658,
+   "mean_shift_llm": 1.218069375757082,
+   "slope_model": -0.25271159063970944,
+   "slope_llm": -0.22950739967495046
+  },
+  "Alice neg.": {
+   "mean_shift_model": 0.4945132489464049,
+   "mean_shift_llm": 0.5685043558808531,
+   "slope_model": -0.24583934457363504,
+   "slope_llm": -0.2726454203936173
+  },
+  "Bob aff.": {
+   "mean_shift_model": 0.9891346140630776,
+   "mean_shift_llm": 0.9526678986253653,
+   "slope_model": -0.2617852613856944,
+   "slope_llm": -0.21243770794521954
+  },
+  "Bob neg.": {
+   "mean_shift_model": 0.42824747385984663,
+   "mean_shift_llm": 0.4501085349919289,
+   "slope_model": -0.25401105669243434,
+   "slope_llm": -0.33843250392153745
+  }
+ }
+}

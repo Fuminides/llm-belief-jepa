@@ -1,0 +1,306 @@
+{
+ "states": 400,
+ "decoder_test_r2": {
+  "2": 0.9582263827323914,
+  "9": 0.8305419683456421,
+  "17": 0.831777036190033,
+  "22": 0.8732590675354004
+ },
+ "live_vs_stored_state_correlation": 0.9999561905860901,
+ "real": {
+  "toward": 0.7873903898708522,
+  "spillover": 0.1614919900894165
+ },
+ "conditions": {
+  "oracle, layer 2": {
+   "toward": 0.002828381839208305,
+   "fraction_of_real": 0.0035920959610292124,
+   "correlation_with_real": -0.006251606102767297,
+   "spillover": 0.03753114119172096
+  },
+  "oracle, seen, layer 2": {
+   "toward": -0.002588270791165996,
+   "fraction_of_real": -0.0032871505983080697,
+   "correlation_with_real": 0.02025225527497733,
+   "spillover": 0.034368306398391724
+  },
+  "latent, layer 2": {
+   "toward": 0.0010417131180292926,
+   "fraction_of_real": 0.0013229944528535007,
+   "correlation_with_real": 0.00017489368580923527,
+   "spillover": 0.03407246619462967
+  },
+  "inverted, layer 2": {
+   "toward": 0.0009547690255567432,
+   "fraction_of_real": 0.0012125738869042388,
+   "correlation_with_real": 0.1189395551282992,
+   "spillover": 0.05608194321393967
+  },
+  "random, layer 2": {
+   "toward": 0.0027250367193482816,
+   "fraction_of_real": 0.0034608457944162135,
+   "correlation_with_real": 0.013855083198619418,
+   "spillover": 0.03853027522563934
+  },
+  "oracle, layer 9": {
+   "toward": 0.008459010303486138,
+   "fraction_of_real": 0.010743095689640797,
+   "correlation_with_real": 0.11762367893847096,
+   "spillover": 0.0513821542263031
+  },
+  "oracle, seen, layer 9": {
+   "toward": -0.0013899539900012314,
+   "fraction_of_real": -0.0017652666426741781,
+   "correlation_with_real": 0.10196402072008694,
+   "spillover": 0.07270779460668564
+  },
+  "latent, layer 9": {
+   "toward": 0.003138324064202607,
+   "fraction_of_real": 0.0039857281782640945,
+   "correlation_with_real": 0.10886102741775654,
+   "spillover": 0.06913229823112488
+  },
+  "inverted, layer 9": {
+   "toward": 0.017720622490160168,
+   "fraction_of_real": 0.022505510250216167,
+   "correlation_with_real": 0.1422675434979778,
+   "spillover": 0.1883065402507782
+  },
+  "random, layer 9": {
+   "toward": 0.0032256037183105947,
+   "fraction_of_real": 0.00409657491354404,
+   "correlation_with_real": 0.0032804411329148664,
+   "spillover": 0.07090117782354355
+  },
+  "oracle, layer 17": {
+   "toward": -0.002768446334521286,
+   "fraction_of_real": -0.0035159767888142076,
+   "correlation_with_real": 0.08270161386632467,
+   "spillover": 0.024379946291446686
+  },
+  "oracle, seen, layer 17": {
+   "toward": -0.0007464718190021812,
+   "fraction_of_real": -0.0009480326768080286,
+   "correlation_with_real": 0.01052588894053948,
+   "spillover": 0.024499867111444473
+  },
+  "latent, layer 17": {
+   "toward": 0.0008460369129898027,
+   "fraction_of_real": 0.0010744821423697712,
+   "correlation_with_real": 0.11654560764868545,
+   "spillover": 0.02374766394495964
+  },
+  "inverted, layer 17": {
+   "toward": -0.002471509216411505,
+   "fraction_of_real": -0.003138861291940434,
+   "correlation_with_real": 0.016834551399254452,
+   "spillover": 0.029409142211079597
+  },
+  "random, layer 17": {
+   "toward": -0.0015824115282157436,
+   "fraction_of_real": -0.0020096911882240406,
+   "correlation_with_real": -0.029314050060148436,
+   "spillover": 0.03065909445285797
+  },
+  "oracle, layer 22": {
+   "toward": -0.0008991564530879259,
+   "fraction_of_real": -0.0011419449165939218,
+   "correlation_with_real": -0.007215642955356976,
+   "spillover": 0.024006331339478493
+  },
+  "oracle, seen, layer 22": {
+   "toward": 0.0011451617113198153,
+   "fraction_of_real": 0.001454376032589939,
+   "correlation_with_real": -0.008424059721459409,
+   "spillover": 0.022320957854390144
+  },
+  "latent, layer 22": {
+   "toward": -0.0015977747182478197,
+   "fraction_of_real": -0.0020292027167233863,
+   "correlation_with_real": 0.03788994585108028,
+   "spillover": 0.023339858278632164
+  },
+  "inverted, layer 22": {
+   "toward": 0.002041085436940193,
+   "fraction_of_real": 0.0025922153269802694,
+   "correlation_with_real": -0.04925974999469053,
+   "spillover": 0.0365232415497303
+  },
+  "random, layer 22": {
+   "toward": 0.0014732046518474817,
+   "fraction_of_real": 0.0018709964850969502,
+   "correlation_with_real": -0.021953014132234928,
+   "spillover": 0.020753974094986916
+  },
+  "latent, four layers": {
+   "toward": 0.001357265489641577,
+   "fraction_of_real": 0.0017237516575026978,
+   "correlation_with_real": 0.11307419943231531,
+   "spillover": 0.0687718316912651
+  },
+  "oracle, four layers": {
+   "toward": 0.009417403837433084,
+   "fraction_of_real": 0.011960272767588296,
+   "correlation_with_real": 0.15040509041395567,
+   "spillover": 0.05429515242576599
+  },
+  "oracle, all memories": {
+   "toward": 0.12499198672827333,
+   "fraction_of_real": 0.15874207805453977,
+   "correlation_with_real": 0.3507242158892248,
+   "spillover": 0.10315980762243271
+  },
+  "oracle, attention only": {
+   "toward": 0.23260647070594132,
+   "fraction_of_real": 0.2954144141181269,
+   "correlation_with_real": 0.7319794469179115,
+   "spillover": 0.0636347308754921
+  },
+  "oracle, convolutions only": {
+   "toward": 0.11742064657155424,
+   "fraction_of_real": 0.14912633946524745,
+   "correlation_with_real": 0.5059199593271541,
+   "spillover": 0.15212339162826538
+  },
+  "oracle, memories and attention": {
+   "toward": 0.487442353121005,
+   "fraction_of_real": 0.6190605821350643,
+   "correlation_with_real": 0.8778820974961156,
+   "spillover": 0.1166282445192337
+  },
+  "oracle, everything": {
+   "toward": 0.789496605489403,
+   "fraction_of_real": 1.0026749318326025,
+   "correlation_with_real": 0.9982330965816348,
+   "spillover": 0.16242608428001404
+  }
+ },
+ "layers": {
+  "2": {
+   "latent_forecast_toward": 0.7890812562033535,
+   "latent_forecast_r2_real": 0.9035496711730957,
+   "edit_norm": {
+    "oracle": 1.3420263528823853,
+    "oracle, seen": 0.1829332858324051,
+    "latent": 0.17360368371009827,
+    "inverted": 0.4173215925693512,
+    "random": 0.17360368371009827,
+    "S": 6.908337593078613
+   },
+   "latent_closure_r2": -114.3951187133789,
+   "latent_closure_slope": 0.0007797749311146386,
+   "latent_encoder_reads_edit_r2": 0.8154829740524292,
+   "inverted_closure_r2": -45.84646987915039,
+   "inverted_closure_slope": 0.004064419002202676,
+   "inverted_encoder_reads_edit_r2": -0.5776056051254272
+  },
+  "9": {
+   "latent_forecast_toward": 0.7498565250076353,
+   "latent_forecast_r2_real": 0.8907091021537781,
+   "edit_norm": {
+    "oracle": 1.742203712463379,
+    "oracle, seen": 0.20427913963794708,
+    "latent": 0.17701804637908936,
+    "inverted": 0.4185207784175873,
+    "random": 0.17701804637908936,
+    "S": 6.64717960357666
+   },
+   "latent_closure_r2": -29.395490646362305,
+   "latent_closure_slope": 0.013669152370941292,
+   "latent_encoder_reads_edit_r2": 0.7580877542495728,
+   "inverted_closure_r2": -3.0734238624572754,
+   "inverted_closure_slope": 0.06584439792183333,
+   "inverted_encoder_reads_edit_r2": -7.123394012451172
+  },
+  "17": {
+   "latent_forecast_toward": 0.7385545833967626,
+   "latent_forecast_r2_real": 0.8882825374603271,
+   "edit_norm": {
+    "oracle": 2.2661678791046143,
+    "oracle, seen": 0.27168014645576477,
+    "latent": 0.23324090242385864,
+    "inverted": 0.6083268523216248,
+    "random": 0.23324090242385864,
+    "S": 15.755205154418945
+   },
+   "latent_closure_r2": -159.3022918701172,
+   "latent_closure_slope": 0.002608706330311605,
+   "latent_encoder_reads_edit_r2": 0.7979722023010254,
+   "inverted_closure_r2": -129.75875854492188,
+   "inverted_closure_slope": -0.002688258393734871,
+   "inverted_encoder_reads_edit_r2": -3.2077689170837402
+  },
+  "22": {
+   "latent_forecast_toward": 0.7555118715390563,
+   "latent_forecast_r2_real": 0.8905159831047058,
+   "edit_norm": {
+    "oracle": 0.7184171080589294,
+    "oracle, seen": 0.08702342957258224,
+    "latent": 0.07902609556913376,
+    "inverted": 0.22393447160720825,
+    "random": 0.07902609556913376,
+    "S": 9.401771545410156
+   },
+   "latent_closure_r2": -170.9897003173828,
+   "latent_closure_slope": 0.0019102303670344917,
+   "latent_encoder_reads_edit_r2": 0.7249327898025513,
+   "inverted_closure_r2": -83.5563735961914,
+   "inverted_closure_slope": -0.0018730072364126222,
+   "inverted_encoder_reads_edit_r2": -1.9315896034240723
+  }
+ },
+ "by_clue_type": {
+  "Alice aff.": {
+   "real": 1.2264942070271105,
+   "n": 94,
+   "forecast, layer 2": 1.2229080923060154,
+   "forecast, layer 9": 1.1770824986569426,
+   "forecast, layer 17": 1.1143243249426498,
+   "forecast, layer 22": 1.1765284138791106,
+   "latent edit, layer 2": 0.0007844739296334855,
+   "latent edit, layer 9": -0.0011427340375140627,
+   "latent edit, layer 17": 0.0024387333542108536,
+   "latent edit, layer 22": -0.0038626264146667845,
+   "latent, four layers": -0.004791929128956288
+  },
+  "Alice neg.": {
+   "real": 0.53338702339679,
+   "n": 120,
+   "forecast, layer 2": 0.5832917674134175,
+   "forecast, layer 9": 0.5164362404495477,
+   "forecast, layer 17": 0.5121186458195249,
+   "forecast, layer 22": 0.520770404736201,
+   "latent edit, layer 2": 0.007326600136972654,
+   "latent edit, layer 9": 0.00045087061201532684,
+   "latent edit, layer 17": 0.00020296964794397354,
+   "latent edit, layer 22": -0.0003700153290992603,
+   "latent, four layers": 0.009117082863425215
+  },
+  "Bob aff.": {
+   "real": 0.9742384559505588,
+   "n": 91,
+   "forecast, layer 2": 0.9521695928914207,
+   "forecast, layer 9": 0.9408428695175673,
+   "forecast, layer 17": 0.9369167400585426,
+   "forecast, layer 22": 0.9407531802470868,
+   "latent edit, layer 2": -0.012257669141495621,
+   "latent edit, layer 9": -0.0036235469301323315,
+   "latent edit, layer 17": 0.005018367741645856,
+   "latent edit, layer 22": -0.003679579021511497,
+   "latent, four layers": -0.008313633747153229
+  },
+  "Bob neg.": {
+   "real": 0.49477429672291406,
+   "n": 95,
+   "forecast, layer 2": 0.4635441764404899,
+   "forecast, layer 9": 0.43902952788691774,
+   "forecast, layer 17": 0.4627545891623748,
+   "forecast, layer 22": 0.45800094463323293,
+   "latent edit, layer 2": 0.006096848139637395,
+   "latent edit, layer 9": 0.017246157077974396,
+   "latent edit, layer 17": -0.00391425255097841,
+   "latent edit, layer 22": 0.001086531853989551,
+   "latent, four layers": 0.006903560645878315
+  }
+ }
+}
