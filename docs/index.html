@@ -163,7 +163,7 @@ footer { color: var(--muted); font-size: 14px; }
 <div class="page">
 
 <header>
-  <div class="eyebrow">Working document · 2026</div>
+  <div class="eyebrow">Preprint · 2026</div>
   <h1>What does the model think it knows? A latent model of how an LLM updates its beliefs</h1>
   <p class="byline"><b>Javier Fumanal-Idocin</b></p>
   <div class="links">
@@ -176,12 +176,13 @@ footer { color: var(--muted); font-size: 14px; }
 
 <section class="prose">
   <h2>TL;DR</h2>
-  <p class="note">An LLM playing a game holds a belief about the hidden state of the game. We read that belief in the recurrent memory of Qwen3.5 (2B, 9B, 27B), compare it with the exact Bayesian posterior, and train an anchored JEPA on the memory to learn how a clue or a move changes it. The departure from Bayes is structured and the same at every size: a negation counts half, the sources weigh nearer each other than stated, the latest clue weighs most. The information to be right is in the state; the update misuses it. The belief is one and held in every layer. The JEPA's prediction error flags unusual input, not wrong answers. In the dungeon only the 27B plays the game, and it breaks a forbidden rule once in 800 games.</p>
+  <p class="note">Qwen3.5 at 2B, 9B and 27B updates its beliefs away from Bayes in the same ways at every size: a negation counts half, the latest clue counts most, and the surer the model, the less it moves. An anchored JEPA trained on the model's recurrent memory forecasts those beliefs, reproduces its update rule on clues it never read and flags unusual input by its surprise; in the dungeon only the 27B plays, it never says a forbidden word, and it still takes a shortcut that hurts others in a third of the games.</p>
 </section>
 
 <section class="prose">
   <h2>Abstract</h2>
-  <p>When an LLM solves a problem it is holding a belief of the state that is updated as new evidence arrives. Prior mechanistic interpretability literature has used linear probes to understand where and how this belief state "lives" inside the model and how it affects its decisions. However, interacting with this belief state or understanding its internal dynamics is still problematic. In this work, first we locate the belief state in two games, a clue game and a text dungeon, where it is well defined and can be intervened, and we compare it with a Bayes-optimal model. Secondly, we use an anchored Joint Embedding Predictive Architecture (JEPA), whose latent is tied to the belief the LLM states, to learn the transition between different moments in the game, and to understand the "world model", or lack of it, of the LLM. Based on its latent space, we are able to understand the effect of each clue and why the LLM shows significant differences with the Bayes optimal solutions. For our experiments, we use Qwen3.5-2B, 9B and 27B.</p>
+  <p>When an LLM solves a problem it is holding a belief of the state that is updated as new evidence arrives. Prior mechanistic interpretability literature has used linear probes to understand where and how this belief state "lives" inside the model and how it affects its decisions. However, interacting with this belief state or understanding its internal dynamics is still problematic. In this work, first we locate the belief state in two games, a clue game and a text dungeon, where it is well defined and can be intervened, and we compare it with a Bayes-optimal model. Secondly, we use an anchored Joint Embedding Predictive Architecture (JEPA), whose latent is tied to the belief the LLM states, to learn the transition between different moments in the game, and to understand the "world model", or lack of it, of the LLM. Based on its latent space, we are able to understand the effect of each clue and why the LLM shows significant differences with the Bayes optimal solutions.</p>
+  <p>For our experiments we use Qwen3.5 at 2B, 9B and 27B parameters. We found that they all three diverge from Bayes in the same ways: a negated clue weighs about half an affirmative one, reliability of the different clue givers is never properly taken into account, the latest clue weighs most, and a clue moves the belief less the surer the model already is about that attribute. The anchored JEPA forecasts the stated belief better than a recurrent model of the clue ids when the wording varies or the model is larger, reproduces the LLM's update rule on clues it never read, and correctly reacts to unusual input by its surprise. We also found that the models believe were not sensible to semantics, when the setting was changed to a safety problem, the model did not get, for example, more conservative in trying in order to avoid asymmetric error costs. In the dungeon game, only the 27B model is able to play correctly. The model learns that fire hurts from one burn but never that ice slides, and the anchored JEPA forecasts these consequence beliefs at R<sup>2</sup> 0.79 of their change. When we stress the model to see if would cause harm in order to solve the maze, we found that it almost never says a forbidden word, yet the model would take a shortcut that hurts others in a third of the games even when the harm is supposed to be to a real person. This means that undesired behaviour in that way must be strictly enforced or otherwise the model will consider inherently unacceptable to do harm to somebody.</p>
 </section>
 
 <section>
@@ -272,16 +273,11 @@ footer { color: var(--muted); font-size: 14px; }
   </div>
 </section>
 
-<section>
-  <h2>Findings</h2>
-  <ul class="findings">
-    <li><b>The departure from Bayes is structured.</b> In every model size a negation weighs about half an assertion, the two sources weigh nearer each other than their stated reliabilities, the latest clue on a property weighs most, and a clue moves the belief less the more the model already believes it. These regularities fade with size: the 27B is the first to give a stated 90% source its Bayesian weight.</li>
-    <li><b>The belief is one, and it is everywhere.</b> Every layer's memory supports the same observer; the belief can be read from any one place and changed only by writing every place.</li>
-    <li><b>The information is there; the update is not Bayesian.</b> On the turns where the answer misses the posterior, a probe of the early layers recovers it almost exactly. The free numbers of the anchored JEPA hold recency, contradiction and the source, the bookkeeping the LLM uses and Bayes would not.</li>
-    <li><b>The anchored JEPA forecasts what the actions alone cannot.</b> It beats a model that only sees which clues arrived where the state carries something the clue ids do not give cheaply: the wording for the 2B, the belief itself for the 9B and 27B. Its prediction error flags unusual input, contradiction and convoluted wording, so it monitors what the model reads rather than what it answers.</li>
-    <li><b>In the dungeon only the 27B plays the game.</b> It reaches the exit in 73% of 100 medium levels without thinking and 82% with the previous turn's thought kept; the smaller models walk into walls until the torch runs out. Its remaining errors are pits on the straight line to a door, which thinking avoids every time.</li>
-    <li><b>Rule-breaking under pressure is rare and ordered.</b> Given a forbidden word that makes every hazard harmless, the 27B says it once in 800 games, and puts less probability on it the more real the stated harm. A promised reward does not move it; a spent torch does.</li>
-  </ul>
+<section class="prose">
+  <h2>Conclusions</h2>
+  <p>In this work we studied an LLM playing two games with a hidden state, a clue game with an exact Bayesian posterior and a text dungeon. We read the belief the model states, located it in the recurrent memory of Qwen3.5, and trained an anchored JEPA on that memory, which learned how the LLM processed each clue. We compared our results with a Bayesian observer in search for structured divergences, and we have also analysed the same problems in a safety-aware setting: a clue game in which the decision is to trust or not a program, and a dungeon in which the LLM can provoke harm to others to solve increasingly pressuring situations. We used three parameter sizes for the LLM: 2B, 9B and 27B parameters.</p>
+  <p>Our results show that all models diverge from Bayes in the clue game in the same ways. For example, a negation weighs half a positive clue, the two sources' reliability are weighed nearer than stated to the model, recency bias as the latest clue weighs most, and finally, a clue moves the belief less the surer the model is. Interestingly, three of these biases are documented in human judgement: people update less than Bayes (Phillips and Edwards, 1966; Edwards, 1968; Benjamin, 2019), weigh the latest evidence most when they update step by step (Hogarth and Einhorn, 1992), and take longer and err more on a negated statement than on an affirmative one (Clark and Chase, 1972). We also found that the information to compute the true posterior can be recovered from the state the same turns where the answer diverges from it, so it is the model reasoning that is not particularly good at solving this. The anchored JEPA forecasts better than a baseline using only the word ids, and its surprise correlates with contradiction and convoluted wording. Regarding problem solving, we found that the dungeon could only be played reliably by the 27B, which means that small models cannot effectively plan even a greedy policy (which was overall quite successful in this game). When given a taboo word, it only said it once in 800 games, and less the more real the stated harm was. However, when the consequences for some acts are stated, but not strictly prohibited, then the model keeps taking some actions even though they are supposed to incur in real harm to real people.</p>
+  <p>Our future work should try to explore fine-tuning and hypernetworks to obtain Bayes-aligned models, and see how much performance we can recover without incurring in catastrophic forgetting. Regarding safety, we also intend to make a model that can pass the dungeon without incurring in any real harm, and develop potential guaranteed or trusted models in this environment, and then compare them to existing models in order to look for models that can do safe planning as well. Finally, we want to scale these findings to frontier models where the dungeon game is substituted by real problems where operational constraints and ethic values are more organically interconnected, and where the JEPA insights of the model can become more meaningful, for example, when the symbolic input space is not so well defined.</p>
 </section>
 
 <section class="cite prose">
@@ -290,7 +286,7 @@ footer { color: var(--muted); font-size: 14px; }
   title  = {What does the model think it knows? A latent model of how an {LLM} updates its beliefs},
   author = {Fumanal-Idocin, Javier},
   year   = {2026},
-  note   = {Working document}
+  note   = {Preprint}
 }</pre>
 </section>
 
