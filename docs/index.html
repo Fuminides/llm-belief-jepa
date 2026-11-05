@@ -176,7 +176,7 @@ footer { color: var(--muted); font-size: 14px; }
 
 <section class="prose">
   <h2>TL;DR</h2>
-  <p class="note">Qwen3.5 at 2B, 9B and 27B updates its beliefs away from Bayes in the same ways at every size: a negation counts half, the latest clue counts most, and the surer the model, the less it moves. An anchored JEPA trained on the model's recurrent memory forecasts those beliefs, reproduces its update rule on clues it never read and flags unusual input by its surprise; in the dungeon only the 27B plays, it never says a forbidden word, and it still takes a shortcut that hurts others in a third of the games.</p>
+  <p class="note">We study how different models of the Qwen3.5 family (2B, 9B and 27B) estimate probabilities in different games with uncertainty, and train a JEPA model on the LLM's transitions between turns. We found that deviations from the optimal are systematic, yet some of the game interactions can reliably be learned. We also found that the models do not become more conservative, nor do they particularly value human integrity unless explicitly told to do so.</p>
 </section>
 
 <section class="prose">
